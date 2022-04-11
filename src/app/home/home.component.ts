@@ -107,9 +107,9 @@ export class HomeComponent {
     ) {}
 
   logOut() {
+    console.log('before logout')
     this.oAuthService.logOut();
     localStorage.removeItem('access_token')
-    this.router.navigate(['login'])
   }
 
 }

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AutoLoginComponent } from './component/auto-login/auto-login.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AlreadyLoginGuard } from './shared/guards/already-login.guard';
 import { AuthenticationGuard } from './shared/guards/authentication.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: AutoLoginComponent },
   {
     path: 'login',
     component: LoginComponent,
@@ -15,7 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthenticationGuard],
+    // canActivate: [AuthenticationGuard],
   },
 ];
 

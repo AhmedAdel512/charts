@@ -13,7 +13,7 @@ export const authCodeFlowConfig: AuthConfig = {
   sessionChecksEnabled: false,
   clearHashAfterLogin: false,
   nonceStateSeparator: 'semicolon',
-  redirectUri: 'http://localhost:4200/home',
+  redirectUri: 'http://localhost:4200/',
   // The SPA's id. The SPA is registerd with this id at the auth-server
   // clientId: 'server.code',
   clientId: 'POC_Authentication',

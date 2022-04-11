@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { authCodeFlowConfig } from 'src/app/shared/auth/auth';
+import { SaveTokenService } from 'src/app/shared/service/save-token.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   accessToken
 
   constructor(
-    private fb: FormBuilder,
+    private saveToken: SaveTokenService,
     private oAuthService: OAuthService
   ) {
     // this.userForm = this.fb.group({
@@ -23,19 +24,19 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.configureSSO()
+  }
 
+  configureSSO() {
+    this.oAuthService.configure(authCodeFlowConfig);
+    this.oAuthService.loadDiscoveryDocumentAndTryLogin();
+    console.log('in configureSSO')
   }
 
   logIn() {
     this.oAuthService.configure(authCodeFlowConfig);
-    this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(
-      response => {
-        console.log(response , 'response')
-      }
-    );
-    this.oAuthService.initCodeFlow();
-    this.accessToken = this.oAuthService.getAccessToken();
-    console.log(this.accessToken);
-    localStorage.setItem('access_token', this.accessToken)
+    this.oAuthService.loadDiscoveryDocumentAndTryLogin();
+    this.oAuthService.initCodeFlow()
+    this.saveToken.saveTokenInLocalStorage(this.oAuthService.getAccessToken())
   }
 }

@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NgChartsModule } from 'ng2-charts';
+import { AutoLoginComponent } from './component/auto-login/auto-login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AutoLoginComponent
   ],
   imports: [
     BrowserModule,
