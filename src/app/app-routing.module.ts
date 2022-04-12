@@ -8,7 +8,6 @@ import { AuthenticationGuard } from './shared/guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', component: AutoLoginComponent },
-  // { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
@@ -16,8 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
     canActivate: [AuthenticationGuard],
+    loadChildren: () => import('./feature-modules/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
 ];
 
