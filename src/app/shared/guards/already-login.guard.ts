@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../service/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlreadyLoginGuard implements CanActivate {
-  constructor( private _router:Router) {}
+  constructor(private _router: Router, private _authService: AuthService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -15,16 +16,12 @@ export class AlreadyLoginGuard implements CanActivate {
   }
 
   public checkAuth(): boolean {
-    let token  = localStorage.getItem('access_token');
-    if(token){
+
+    if(this._authService.checkToken()) {
       this._router.navigate(['/home']);
       return false;
-    } else {
-      // this._router.navigate(['/login']);
-      console.log('value of Token: ', token)
-      return true;
-
     }
+    return true;
   }
-  
+
 }

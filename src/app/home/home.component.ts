@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { AuthService } from '../shared/service/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   accessToken
   // public pieChartOptions: ChartOptions = {
@@ -20,7 +21,7 @@ export class HomeComponent {
   //   ['Sales'],
   //   'Mail Sales',
   // ];
-
+  public flag:boolean = false
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [];
   // public pieChartLegend = true;
@@ -102,14 +103,22 @@ export class HomeComponent {
     },
   };
 
-  constructor(private oAuthService: OAuthService,
-              private router: Router
+  constructor(private _oAuthService:AuthService
+
     ) {}
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.flag = true
+    }, 500);
+  //   let loader = document.getElementById('loader');
+  //   console.log(loader)
+  //   window.addEventListener ("load", function() {
+  //     loader.style.height = '0px'
+  // });
+  }
 
   logOut() {
-    console.log('before logout')
-    this.oAuthService.logOut();
-    localStorage.removeItem('access_token')
+    this._oAuthService.logout();
   }
 
 }

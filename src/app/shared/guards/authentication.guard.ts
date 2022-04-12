@@ -7,12 +7,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../service/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationGuard implements CanActivate {
-  constructor( private _router:Router) {}
+  constructor(private _router: Router, private _authService: AuthService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -26,13 +27,11 @@ export class AuthenticationGuard implements CanActivate {
   }
 
   public checkAuth(): boolean {
-    let token  = localStorage.getItem('access_token');
-    console.log('value of Token: ', token)
-    if(token){
-      return true;
-    }else{
+
+    if (!this._authService.checkToken()) {
       this._router.navigate(['/login']);
       return false
     }
+    return true;
   }
 }

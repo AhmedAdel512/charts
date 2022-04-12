@@ -1,9 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
-import { BehaviorSubject } from 'rxjs';
-import { authCodeFlowConfig } from './shared/auth/auth';
+import { AuthService } from './shared/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +9,10 @@ import { authCodeFlowConfig } from './shared/auth/auth';
 export class AppComponent implements OnInit {
 
 
-  constructor() {}
-  
-  ngOnInit(): void {}
+  constructor(private _authService: AuthService) { }
+
+  ngOnInit(): void {
+    this._authService.configureAuth()
+  }
+
 }

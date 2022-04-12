@@ -8,6 +8,7 @@ import { AuthenticationGuard } from './shared/guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', component: AutoLoginComponent },
+  // { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
@@ -16,7 +17,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard],
   },
 ];
 
@@ -24,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
