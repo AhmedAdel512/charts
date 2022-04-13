@@ -5,20 +5,18 @@ import { BaseChartDirective } from 'ng2-charts';
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.css']
+  styleUrls: ['./bar-chart.component.css'],
 })
 export class BarChartComponent implements OnInit {
-
-  @Input() title: string
-  @Input() empoymentPercentage: ChartData
-
+  @Input() title: string = 'Bar Chart';
+  @Input() barChartData: ChartData<'bar'> = { labels: [], datasets: [] };
+  @Input() enableRemove: boolean = false;
+  @Input() enableMinimize: boolean = true;
 
   public barChartPlugins = [];
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 
   // public barChartData: ChartData<'bar'> = {
   //   labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
@@ -43,6 +41,4 @@ export class BarChartComponent implements OnInit {
   //     },
   //   },
   // };
-
-
 }

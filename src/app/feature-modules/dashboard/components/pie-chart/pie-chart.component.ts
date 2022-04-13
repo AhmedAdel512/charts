@@ -8,14 +8,13 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./pie-chart.component.css'],
 })
 export class PieChartComponent implements OnInit {
-  @Input() title: string;
-  @Input() companiesData: ChartData;
-
+  @Input() title: string = 'Pie Chart';
+  @Input() pieChartData: ChartData<'pie'> = {datasets:[], labels:[]};
+  @Input() enableRemove:boolean = false;
+  @Input() enableMinimize:boolean = true;
   @Output() public sendCompanyName = new EventEmitter<string>();
   @Output() public sendCompanyData = new EventEmitter<number>();
   // @Input() ChartType: ChartType
-
-  public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [];
   constructor() {}
 
@@ -55,11 +54,11 @@ export class PieChartComponent implements OnInit {
   public pieChartClick(ev: any) {
     if (ev.length > 0) {
       let chartIndex = ev[0].index;
-      let companyName: any = this.companiesData.labels[chartIndex];
-      let companyData: any = this.companiesData.datasets[0].data[chartIndex];
+      let companyName: any = this.pieChartData.labels[chartIndex];
+      let companyData: any = this.pieChartData.datasets[0].data[chartIndex];
       console.log(
-        this.companiesData.labels[chartIndex],
-        this.companiesData.datasets[0].data[chartIndex]
+        this.pieChartData.labels[chartIndex],
+        this.pieChartData.datasets[0].data[chartIndex]
       );
       this.sendCompanyName.emit(companyName);
       this.sendCompanyData.emit(companyData);

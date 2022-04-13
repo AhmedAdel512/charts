@@ -1,12 +1,14 @@
 <div class="card card-success">
     <div class="card-header">
-      <h3 class="card-title">Bar Chart</h3>
+      <h3 class="card-title">{{title}}</h3>
 
       <div class="card-tools">
         <button
           type="button"
           class="btn btn-tool"
           data-card-widget="collapse"
+          *ngIf="enableMinimize"
+
         >
           <i class="fas fa-minus"></i>
         </button>
@@ -14,6 +16,7 @@
           type="button"
           class="btn btn-tool"
           data-card-widget="remove"
+          *ngIf="enableRemove"
         >
           <i class="fas fa-times"></i>
         </button>
@@ -24,7 +27,7 @@
         <canvas
           id="barChart"
           baseChart
-          [data]="empoymentPercentage"
+          [data]="barChartData"
           type="bar"
           style="
             min-height: 250px;

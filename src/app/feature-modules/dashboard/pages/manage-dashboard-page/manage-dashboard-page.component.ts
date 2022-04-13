@@ -156,11 +156,7 @@ export class ManageDashboardPageComponent implements OnInit {
     setTimeout(() => {
       this.flag = true;
     }, 500);
-    //   let loader = document.getElementById('loader');
-    //   console.log(loader)
-    //   window.addEventListener ("load", function() {
-    //     loader.style.height = '0px'
-    // });
+
   }
 
   logOut() {
