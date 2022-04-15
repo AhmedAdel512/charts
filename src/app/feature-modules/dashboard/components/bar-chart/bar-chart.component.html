@@ -28,6 +28,7 @@
           id="barChart"
           baseChart
           [data]="barChartData"
+          (chartClick)="pieChartClick($event.active)"
           type="bar"
           style="
             min-height: 250px;

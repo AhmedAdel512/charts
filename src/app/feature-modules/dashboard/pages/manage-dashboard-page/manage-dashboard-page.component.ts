@@ -71,6 +71,10 @@ export class ManageDashboardPageComponent implements OnInit {
     console.log(value);
   }
 
+  barChartSendData(value) {
+    console.log(value);
+  }
+
   public pieChartClick(ev: any) {
     console.log(ev);
     if (ev.length > 0) {

@@ -11,6 +11,7 @@ import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NgChartsModule } from 'ng2-charts';
 import { AutoLoginComponent } from './component/auto-login/auto-login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AutoLoginComponent } from './component/auto-login/auto-login.component'
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

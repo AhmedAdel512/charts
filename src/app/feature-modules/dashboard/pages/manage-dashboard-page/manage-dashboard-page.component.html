@@ -97,8 +97,15 @@
                   <app-bar-chart
                     [title]
                     [barChartData]="barChartData"
+                    (barChartSendData)="barChartSendData($event)"
                     [enableRemove]="true"
                   ></app-bar-chart>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- PIE CHART -->
+                  <app-table></app-table>
                 </div>
               </div>
             </div>

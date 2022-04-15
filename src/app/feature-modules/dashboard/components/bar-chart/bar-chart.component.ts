@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -12,6 +12,7 @@ export class BarChartComponent implements OnInit {
   @Input() barChartData: ChartData<'bar'> = { labels: [], datasets: [] };
   @Input() enableRemove: boolean = false;
   @Input() enableMinimize: boolean = true;
+  @Output() public barChartSendData = new EventEmitter<Event>();
 
   public barChartPlugins = [];
   constructor() {}
@@ -41,4 +42,18 @@ export class BarChartComponent implements OnInit {
   //     },
   //   },
   // };
+
+  public pieChartClick(ev: any) {
+    if (ev.length > 0) {
+      let chartIndex = ev[0].index;
+      let companyName: any = this.barChartData.labels[chartIndex];
+      let companyData: any = this.barChartData.datasets[0].data[chartIndex];
+      console.log(
+        this.barChartData.labels[chartIndex],
+        this.barChartData.datasets[0].data[chartIndex]
+      );
+      this.barChartSendData.emit(ev);
+      // this.barChartData.emit(companyData);
+    }
+  }
 }
