@@ -67,11 +67,11 @@
               <div class="row">
                 <div class="col-md-6">
                   <!-- PIE CHART -->
-                  <app-pie-chart [title] [pieChartData]="pieChartCompaniesData"
+                  <app-pie-chart title='Companies Data'[pieChartData]="pieChartCompaniesData"
                     (pieChartSendDate)="pieChartSendDate($event)" [enableRemove]="false"></app-pie-chart>
                 </div>
                 <div class="col-md-6">
-                  <app-bar-chart [title] [barChartData]="barChartData" (barChartSendData)="barChartSendData($event)"
+                  <app-bar-chart title="Company Sales per years" [barChartData]="barChartData" (barChartSendData)="barChartSendData($event)"
                     [enableRemove]="false"></app-bar-chart>
                 </div>
               </div>

@@ -1,18 +1,12 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { DatePipe } from '@angular/common';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { Component, OnInit} from '@angular/core';
+
 import {
-  ChartConfiguration,
   ChartData,
   ChartEvent,
   ChartType,
-  ChartTypeRegistry,
 } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
 import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Component({
@@ -26,26 +20,26 @@ export class ManageDashboardPageComponent implements OnInit {
   pageSize: number = 2;
   pageNumber: number = 1;
   dataSource: PeriodicElement[] = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-    { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-    { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-    { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-    { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-    { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-    { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-    { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-    { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-    { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-    { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', date: '2022-02-17T22:00:00.184Z' },
+    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', date: '2022-02-18T22:00:00.184Z' },
+    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li', date: '2022-02-12T22:00:00.184Z' },
+    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be', date: '2022-02-10T22:00:00.184Z' },
+    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B', date: '2022-02-01T22:00:00.184Z' },
+    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C', date: '2022-02-05T22:00:00.184Z' },
+    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N', date: '2022-04-06T22:00:00.184Z' },
+    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O', date: '2022-04-12T22:00:00.184Z' },
+    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F', date: '2022-04-11T22:00:00.184Z' },
+    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne', date: '2022-06-10T22:00:00.184Z' },
+    { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na', date: '2022-08-15T22:00:00.184Z' },
+    { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg', date: '2022-09-03T22:00:00.184Z' },
+    { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al', date: '2022-01-05T22:00:00.184Z' },
+    { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si', date: '2022-03-06T22:00:00.184Z' },
+    { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P', date: '2022-06-07T22:00:00.184Z' },
+    { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S', date: '2022-01-08T22:00:00.184Z' },
+    { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl', date: '2022-11-09T22:00:00.184Z' },
+    { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar', date: '2022-12-09T22:00:00.184Z' },
+    { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K', date: '2022-08-13T22:00:00.184Z' },
+    { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca', date: '2022-03-29T22:00:00.184Z' },
   ];
 
   pagination = {
@@ -56,7 +50,7 @@ export class ManageDashboardPageComponent implements OnInit {
     pageSizeOptions: [5, 10, 20]
   }
 
-  tableHeaderNames: string[] = ['position', 'name', 'weight', 'symbol'];
+  tableHeaderNames: string[] = ['position', 'name', 'weight', 'symbol', 'Date'];
 
   filterResult = this.getItems([...this.dataSource])
 
@@ -132,10 +126,7 @@ export class ManageDashboardPageComponent implements OnInit {
       '2008',
       '2009',
       '2010',
-      '2011',
-      '2012',
-      '2013',
-      '2014',
+
     ],
     datasets: [
       { data: [65, 59, 80, 81, 56, 55, 40], label: 'Flairstech' },
@@ -184,7 +175,7 @@ export class ManageDashboardPageComponent implements OnInit {
   //   this.list_product.paginator = this.paginator;
   // }
 
-  pieChartSendDate(value) {
+   pieChartSendDate(value) {
     if (value.length > 0) {
       console.log(value[0].element.$context.raw);
       console.log(this.barChartData.labels[value[0].index]);
@@ -314,27 +305,7 @@ export interface PeriodicElement {
   position: number;
   weight: number;
   symbol: string;
+  date:string
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
-];
+
