@@ -88,8 +88,7 @@
                   <app-pie-chart
                     [title]
                     [pieChartData]="pieChartCompaniesData"
-                    (sendCompanyName)="sendCompanyName($event)"
-                    (sendCompanyData)="sendCompanyData($event)"
+                    (pieChartSendDate)="pieChartSendDate($event)"
                     [enableRemove]="true"
                   ></app-pie-chart>
                 </div>
@@ -104,8 +103,31 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <!-- PIE CHART -->
-                  <app-table></app-table>
+                  <app-date-picker-range
+                    (startDate)="startDate($event)"
+                    (endDate)="endDate($event)"
+                    style="float: right"
+                  ></app-date-picker-range>
+                  <app-multiple-selection
+                    style="float: right"
+                    class="mx-4"
+                    (selectionDataFromToppingList)="
+                      selectionDataFromToppingList($event)
+                    "
+                    [toppingList]="toppingList"
+                  ></app-multiple-selection>
+                  <app-table
+                    [tableData]="filterResult"
+                    [tableHeaderNames]="tableHeaderNames"
+                    (filterValue)="filterValue($event)"
+                    (sortState)="sortState($event)"
+                  ></app-table>
+                  <app-pagination
+                    [totalPages]="totalPages"
+                    [pageSize]="pageSize"
+                    [pageNumber]="pageNumber"
+                    #paginator
+                  ></app-pagination>
                 </div>
               </div>
             </div>

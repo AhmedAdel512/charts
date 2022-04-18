@@ -9,9 +9,10 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 export class PieChartComponent implements OnInit {
   @Input() title: string = 'Pie Chart';
-  @Input() pieChartData: ChartData<'pie'> = {datasets:[], labels:[]};
-  @Input() enableRemove:boolean = false;
-  @Input() enableMinimize:boolean = true;
+  @Input() pieChartData: ChartData<'pie'> = { datasets: [], labels: [] };
+  @Input() enableRemove: boolean = false;
+  @Input() enableMinimize: boolean = true;
+  @Output() public pieChartSendDate = new EventEmitter<Event>();
   @Output() public sendCompanyName = new EventEmitter<string>();
   @Output() public sendCompanyData = new EventEmitter<number>();
   // @Input() ChartType: ChartType
@@ -60,8 +61,9 @@ export class PieChartComponent implements OnInit {
         this.pieChartData.labels[chartIndex],
         this.pieChartData.datasets[0].data[chartIndex]
       );
-      this.sendCompanyName.emit(companyName);
-      this.sendCompanyData.emit(companyData);
+      this.pieChartSendDate.emit(ev);
+      // this.sendCompanyName.emit(companyName);
+      // this.sendCompanyData.emit(companyData);
     }
   }
 }

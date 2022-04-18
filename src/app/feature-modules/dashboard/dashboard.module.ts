@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
@@ -12,6 +12,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DatePickerRangeComponent } from './components/date-picker-range/date-picker-range.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MultipleSelectionComponent } from './components/multiple-selection/multiple-selection.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -20,7 +27,10 @@ import { MatInputModule } from '@angular/material/input';
     BarChartComponent,
     ManageDashboardPageComponent,
     BoxesComponent,
-    TableComponent
+    TableComponent,
+    DatePickerRangeComponent,
+    MultipleSelectionComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +39,15 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule
-  ]
+    MatInputModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    FormsModule
+  ],
+  providers: [
+    DatePipe
+  ],
 })
 export class DashboardModule { }
