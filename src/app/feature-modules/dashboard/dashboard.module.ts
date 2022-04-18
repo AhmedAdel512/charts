@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MultipleSelectionComponent } from './components/multiple-selection/multiple-selection.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ReactiveFormsModule,
     MatDatepickerModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatSortModule
   ],
   providers: [
     DatePipe
