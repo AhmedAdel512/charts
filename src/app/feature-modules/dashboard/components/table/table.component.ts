@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
@@ -9,29 +7,20 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
+
+
   @Input() tableHeaderNames: string[];
-  @Input() paginator: MatPaginator;
   @Input() showFirstLastButtons: boolean;
   @Input() sort: MatSort;
   @Input() tableData: any[];
   @Output() public filterValue = new EventEmitter<string>();
   @Output() public sortState = new EventEmitter<Event>();
 
-  ngOnInit(): void {}
 
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort) sort: MatSort;
+  constructor(private _liveAnnouncer: LiveAnnouncer) { }
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
-
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-  }
 
   applyFilter(event) {
     this.filterValue.emit(event.value)

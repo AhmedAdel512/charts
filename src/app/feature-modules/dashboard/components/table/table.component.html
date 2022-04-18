@@ -1,27 +1,11 @@
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
-  <input
-    matInput
-    (input)="applyFilter($event.target)"
-    placeholder="Ex. ium"
-    #input
-  />
+  <input matInput (input)="applyFilter($event.target)" placeholder="Search by Name" #input />
 </mat-form-field>
-<table
-  mat-table
-  [dataSource]="tableData"
-  matSort
-  (matSortChange)="announceSortChange($event)"
-  class="mat-elevation-z8"
->
-  <!-- Position Column -->
-  <ng-container *ngFor="let tableHeaderName of tableHeaderNames">
+<table mat-table [dataSource]="tableData" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+  <ng-container *ngFor="let tableHeaderName of tableHeaderNames; let i = index">
     <ng-container matColumnDef="{{ tableHeaderName }}">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!(i === 1)" sortActionDescription="Sort">
         {{ tableHeaderName }}
       </th>
       <td mat-cell *matCellDef="let element">{{ element[tableHeaderName] }}</td>
@@ -31,10 +15,3 @@
   <tr mat-header-row *matHeaderRowDef="tableHeaderNames"></tr>
   <tr mat-row *matRowDef="let row; columns: tableHeaderNames"></tr>
 </table>
-
-<!-- <mat-paginator
-  [pageSizeOptions]="[5, 10, 20]"
-  showFirstLastButtons
-  aria-label="Select page of periodic elements"
->
-</mat-paginator> -->
