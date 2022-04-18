@@ -1,12 +1,8 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { DatePipe } from '@angular/common';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {
-  ChartData,
-  ChartEvent,
-  ChartType,
-} from 'chart.js';
+import { ChartData, ChartEvent, ChartType } from 'chart.js';
 import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Component({
@@ -16,30 +12,152 @@ import { AuthService } from 'src/app/shared/service/auth.service';
 })
 export class ManageDashboardPageComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  
   totalPages: number = 5;
   pageSize: number = 2;
   pageNumber: number = 1;
   dataSource: PeriodicElement[] = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', date: '2022-02-17T22:00:00.184Z' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', date: '2022-02-18T22:00:00.184Z' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li', date: '2022-02-12T22:00:00.184Z' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be', date: '2022-02-10T22:00:00.184Z' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B', date: '2022-02-01T22:00:00.184Z' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C', date: '2022-02-05T22:00:00.184Z' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N', date: '2022-04-06T22:00:00.184Z' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O', date: '2022-04-12T22:00:00.184Z' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F', date: '2022-04-11T22:00:00.184Z' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne', date: '2022-06-10T22:00:00.184Z' },
-    { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na', date: '2022-08-15T22:00:00.184Z' },
-    { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg', date: '2022-09-03T22:00:00.184Z' },
-    { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al', date: '2022-01-05T22:00:00.184Z' },
-    { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si', date: '2022-03-06T22:00:00.184Z' },
-    { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P', date: '2022-06-07T22:00:00.184Z' },
-    { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S', date: '2022-01-08T22:00:00.184Z' },
-    { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl', date: '2022-11-09T22:00:00.184Z' },
-    { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar', date: '2022-12-09T22:00:00.184Z' },
-    { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K', date: '2022-08-13T22:00:00.184Z' },
-    { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca', date: '2022-03-29T22:00:00.184Z' },
+    {
+      position: 1,
+      name: 'Hydrogen',
+      weight: 1.0079,
+      symbol: 'H',
+      date: '2022-02-17T22:00:00.184Z',
+    },
+    {
+      position: 2,
+      name: 'Helium',
+      weight: 4.0026,
+      symbol: 'He',
+      date: '2022-02-18T22:00:00.184Z',
+    },
+    {
+      position: 3,
+      name: 'Lithium',
+      weight: 6.941,
+      symbol: 'Li',
+      date: '2022-02-12T22:00:00.184Z',
+    },
+    {
+      position: 4,
+      name: 'Beryllium',
+      weight: 9.0122,
+      symbol: 'Be',
+      date: '2022-02-10T22:00:00.184Z',
+    },
+    {
+      position: 5,
+      name: 'Boron',
+      weight: 10.811,
+      symbol: 'B',
+      date: '2022-02-01T22:00:00.184Z',
+    },
+    {
+      position: 6,
+      name: 'Carbon',
+      weight: 12.0107,
+      symbol: 'C',
+      date: '2022-02-05T22:00:00.184Z',
+    },
+    {
+      position: 7,
+      name: 'Nitrogen',
+      weight: 14.0067,
+      symbol: 'N',
+      date: '2022-04-06T22:00:00.184Z',
+    },
+    {
+      position: 8,
+      name: 'Oxygen',
+      weight: 15.9994,
+      symbol: 'O',
+      date: '2022-04-12T22:00:00.184Z',
+    },
+    {
+      position: 9,
+      name: 'Fluorine',
+      weight: 18.9984,
+      symbol: 'F',
+      date: '2022-04-11T22:00:00.184Z',
+    },
+    {
+      position: 10,
+      name: 'Neon',
+      weight: 20.1797,
+      symbol: 'Ne',
+      date: '2022-06-10T22:00:00.184Z',
+    },
+    {
+      position: 11,
+      name: 'Sodium',
+      weight: 22.9897,
+      symbol: 'Na',
+      date: '2022-08-15T22:00:00.184Z',
+    },
+    {
+      position: 12,
+      name: 'Magnesium',
+      weight: 24.305,
+      symbol: 'Mg',
+      date: '2022-09-03T22:00:00.184Z',
+    },
+    {
+      position: 13,
+      name: 'Aluminum',
+      weight: 26.9815,
+      symbol: 'Al',
+      date: '2022-01-05T22:00:00.184Z',
+    },
+    {
+      position: 14,
+      name: 'Silicon',
+      weight: 28.0855,
+      symbol: 'Si',
+      date: '2022-03-06T22:00:00.184Z',
+    },
+    {
+      position: 15,
+      name: 'Phosphorus',
+      weight: 30.9738,
+      symbol: 'P',
+      date: '2022-06-07T22:00:00.184Z',
+    },
+    {
+      position: 16,
+      name: 'Sulfur',
+      weight: 32.065,
+      symbol: 'S',
+      date: '2022-01-08T22:00:00.184Z',
+    },
+    {
+      position: 17,
+      name: 'Chlorine',
+      weight: 35.453,
+      symbol: 'Cl',
+      date: '2022-11-09T22:00:00.184Z',
+    },
+    {
+      position: 18,
+      name: 'Argon',
+      weight: 39.948,
+      symbol: 'Ar',
+      date: '2022-12-09T22:00:00.184Z',
+    },
+    {
+      position: 19,
+      name: 'Potassium',
+      weight: 39.0983,
+      symbol: 'K',
+      date: '2022-08-13T22:00:00.184Z',
+    },
+    {
+      position: 20,
+      name: 'Calcium',
+      weight: 40.078,
+      symbol: 'Ca',
+      date: '2022-03-29T22:00:00.184Z',
+    },
   ];
 
   pagination = {
@@ -47,12 +165,12 @@ export class ManageDashboardPageComponent implements OnInit {
     pageSize: 5,
     totalPages: 2,
     totalItems: this.dataSource.length,
-    pageSizeOptions: [5, 10, 20]
-  }
+    pageSizeOptions: [5, 10, 20],
+  };
 
   tableHeaderNames: string[] = ['position', 'name', 'weight', 'symbol', 'date'];
 
-  filterResult = this.getItems([...this.dataSource])
+  filterResult = this.getItems([...this.dataSource]);
 
   toppingList: string[] = [
     'Hydrogen',
@@ -84,11 +202,14 @@ export class ManageDashboardPageComponent implements OnInit {
     },
   ];
   paginationChanged(ev) {
-    console.log('pagination changed', ev)
-    this.pagination = { ...this.pagination, ...ev, totalPages : Math.floor(ev.length / ev.pageSize) };
-    this.filterResult = this.getItems([...this.dataSource])
+    console.log('pagination changed', ev);
+    this.pagination = {
+      ...this.pagination,
+      ...ev,
+      totalPages: Math.floor(ev.length / ev.pageSize),
+    };
+    this.filterResult = this.getItems([...this.dataSource]);
   }
-
 
   pieChartCompaniesData: ChartData<'pie', number[], string | string[]> = {
     // labels: [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ],
@@ -118,16 +239,8 @@ export class ManageDashboardPageComponent implements OnInit {
     ],
   };
 
-
   public barChartData: ChartData<'bar'> = {
-    labels: [
-      '2006',
-      '2007',
-      '2008',
-      '2009',
-      '2010',
-
-    ],
+    labels: ['2006', '2007', '2008', '2009', '2010'],
     datasets: [
       { data: [65, 59, 80, 81, 56, 55, 40], label: 'Flairstech' },
       { data: [65, 59, 80, 81, 56, 55, 40], label: ' A' },
@@ -162,20 +275,14 @@ export class ManageDashboardPageComponent implements OnInit {
     private _oAuthService: AuthService,
     private datePipe: DatePipe,
     private _liveAnnouncer: LiveAnnouncer
-  ) { }
+  ) {}
   ngOnInit(): void {
     setTimeout(() => {
       this.flag = true;
     }, 500);
   }
 
-  // ngAfterViewInit() {
-  //   console.log(this.list_product)
-  //   console.log(this.paginator)
-  //   this.list_product.paginator = this.paginator;
-  // }
-
-   pieChartSendDate(value) {
+  pieChartSendDate(value) {
     if (value.length > 0) {
       console.log(value[0].element.$context.raw);
       console.log(this.barChartData.labels[value[0].index]);
@@ -199,7 +306,7 @@ export class ManageDashboardPageComponent implements OnInit {
     console.log(x);
   }
 
-  selectionDataFromToppingList(value:any[]) {
+  selectionDataFromToppingList(value: any[]) {
     if (value.length == 0) {
       this.filterResult = this.dataSource;
     } else {
@@ -224,11 +331,19 @@ export class ManageDashboardPageComponent implements OnInit {
 
   sortState(value) {
     console.log(value);
-    if (value.direction) {
-      this._liveAnnouncer.announce(`Sorted ${value.direction}ending`);
+    this.filterResult = [];
+    let arr = [...this.dataSource];
+    if (value.direction == 'asc') {
+      this.filterResult = arr.sort((a, b) => (a.name < b.name ? -1 : 1));
+      console.log('in asc');
+    } else if (value.direction == 'desc') {
+      console.log('in desc');
+      this.filterResult = arr.sort((a, b) => (a.name > b.name ? -1 : 1));
     } else {
-      this._liveAnnouncer.announce('Sorting cleared');
+      this.filterResult = this.dataSource;
     }
+    // this.getItems(this.filterResult)
+    this.filterResult = this.getItems(this.filterResult)
   }
 
   filterValue(value) {
@@ -240,8 +355,9 @@ export class ManageDashboardPageComponent implements OnInit {
   public getItems(arr: any[]) {
     let start = this.pagination.pageSize * this.pagination.pageIndex;
     let end = start + this.pagination.pageSize;
-    let result = arr.slice(start, end)
-    return [...result]
+    let result = arr.slice(start, end);
+    console.log(result)
+    return [...result];
   }
 
   // public pieChartOptions: ChartOptions = {
@@ -298,14 +414,10 @@ export class ManageDashboardPageComponent implements OnInit {
   }
 }
 
-
-
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
-  date:string
+  date: string;
 }
-
-
