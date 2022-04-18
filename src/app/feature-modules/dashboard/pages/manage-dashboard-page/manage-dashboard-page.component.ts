@@ -20,13 +20,11 @@ import { AuthService } from 'src/app/shared/service/auth.service';
   templateUrl: './manage-dashboard-page.component.html',
   styleUrls: ['./manage-dashboard-page.component.css'],
 })
-export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+export class ManageDashboardPageComponent implements OnInit {
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
   totalPages: number = 5;
   pageSize: number = 2;
   pageNumber: number = 1;
-
-  tableHeaderNames: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource: PeriodicElement[] = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
     { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
@@ -50,28 +48,17 @@ export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
     { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
   ];
 
-  filterResult: PeriodicElement[] = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-    { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-    { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-    { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-    { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-    { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-    { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-    { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-    { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-    { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-    { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
-  ];
+  pagination = {
+    pageIndex: 0,
+    pageSize: 5,
+    totalPages: 2,
+    totalItems: this.dataSource.length,
+    pageSizeOptions: [5, 10, 20]
+  }
+
+  tableHeaderNames: string[] = ['position', 'name', 'weight', 'symbol'];
+
+  filterResult = this.getItems([...this.dataSource])
 
   toppingList: string[] = [
     'Hydrogen',
@@ -102,10 +89,12 @@ export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
       pointHoverBorderColor: 'rgba(225,10,24,0.2)',
     },
   ];
+  paginationChanged(ev) {
+    console.log('pagination changed', ev)
+    this.pagination = { ...this.pagination, ...ev, totalPages : Math.floor(ev.length / ev.pageSize) };
+    this.filterResult = this.getItems([...this.dataSource])
+  }
 
-  public list_product = new MatTableDataSource<PeriodicElement>(
-    this.dataSource
-  );
 
   pieChartCompaniesData: ChartData<'pie', number[], string | string[]> = {
     // labels: [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ],
@@ -134,10 +123,7 @@ export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
       },
     ],
   };
-  ngAfterViewInit() {
-    console.log(this.paginator);
-    this.list_product.paginator = this.paginator;
-  }
+
 
   public barChartData: ChartData<'bar'> = {
     labels: [
@@ -185,7 +171,7 @@ export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
     private _oAuthService: AuthService,
     private datePipe: DatePipe,
     private _liveAnnouncer: LiveAnnouncer
-  ) {}
+  ) { }
   ngOnInit(): void {
     setTimeout(() => {
       this.flag = true;
@@ -222,7 +208,7 @@ export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
     console.log(x);
   }
 
-  selectionDataFromToppingList(value) {
+  selectionDataFromToppingList(value:any[]) {
     if (value.length == 0) {
       this.filterResult = this.dataSource;
     } else {
@@ -258,6 +244,13 @@ export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
     this.filterResult = this.dataSource.filter((data) =>
       data.name.toLowerCase().includes(value.trim().toLowerCase())
     );
+  }
+
+  public getItems(arr: any[]) {
+    let start = this.pagination.pageSize * this.pagination.pageIndex;
+    let end = start + this.pagination.pageSize;
+    let result = arr.slice(start, end)
+    return [...result]
   }
 
   // public pieChartOptions: ChartOptions = {
@@ -313,6 +306,8 @@ export class ManageDashboardPageComponent implements OnInit, AfterViewInit {
     this._oAuthService.logout();
   }
 }
+
+
 
 export interface PeriodicElement {
   name: string;

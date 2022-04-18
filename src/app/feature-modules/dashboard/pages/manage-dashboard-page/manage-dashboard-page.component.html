@@ -1,19 +1,10 @@
 <body class="sidebar-collapse">
   <div class="wrapper">
     <!-- Preloader -->
-    <div
-      id="loader"
-      class="preloader flex-column justify-content-center align-items-center"
-      [ngClass]="{ 'h-0': flag }"
-    >
-      <img
-        [ngClass]="{ 'd-none': flag }"
-        class="animation__shake"
-        src="../../../../../assets/dist/img/AdminLTELogo.png"
-        alt="AdminLTELogo"
-        height="60"
-        width="60"
-      />
+    <div id="loader" class="preloader flex-column justify-content-center align-items-center"
+      [ngClass]="{ 'h-0': flag }">
+      <img [ngClass]="{ 'd-none': flag }" class="animation__shake" src="../../../../../assets/dist/img/AdminLTELogo.png"
+        alt="AdminLTELogo" height="60" width="60" />
     </div>
 
     <!-- Navbar -->
@@ -62,21 +53,12 @@
               <div class="row">
                 <div class="col-lg-3 col-6">
                   <!-- small box -->
-                  <app-boxes
-                    title="New Orders"
-                    textColor="text-white"
-                    value="150"
-                    bgColor="blue"
-                  ></app-boxes>
+                  <app-boxes title="New Orders" textColor="text-white" value="150" bgColor="blue"></app-boxes>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6" *ngFor="let box of boxes">
-                  <app-boxes
-                    [title]="box.title"
-                    [textColor]="box.textColor"
-                    [value]="box.value"
-                    [bgColor]="box.bgColor"
-                  ></app-boxes>
+                  <app-boxes [title]="box.title" [textColor]="box.textColor" [value]="box.value"
+                    [bgColor]="box.bgColor"></app-boxes>
 
                   <!-- small box -->
                 </div>
@@ -85,49 +67,25 @@
               <div class="row">
                 <div class="col-md-6">
                   <!-- PIE CHART -->
-                  <app-pie-chart
-                    [title]
-                    [pieChartData]="pieChartCompaniesData"
-                    (pieChartSendDate)="pieChartSendDate($event)"
-                    [enableRemove]="true"
-                  ></app-pie-chart>
+                  <app-pie-chart [title] [pieChartData]="pieChartCompaniesData"
+                    (pieChartSendDate)="pieChartSendDate($event)" [enableRemove]="false"></app-pie-chart>
                 </div>
                 <div class="col-md-6">
-                  <app-bar-chart
-                    [title]
-                    [barChartData]="barChartData"
-                    (barChartSendData)="barChartSendData($event)"
-                    [enableRemove]="true"
-                  ></app-bar-chart>
+                  <app-bar-chart [title] [barChartData]="barChartData" (barChartSendData)="barChartSendData($event)"
+                    [enableRemove]="false"></app-bar-chart>
                 </div>
               </div>
-              <div class="row">
+              <div class="row pb-5">
                 <div class="col-md-12">
-                  <app-date-picker-range
-                    (startDate)="startDate($event)"
-                    (endDate)="endDate($event)"
-                    style="float: right"
-                  ></app-date-picker-range>
-                  <app-multiple-selection
-                    style="float: right"
-                    class="mx-4"
-                    (selectionDataFromToppingList)="
+                  <app-date-picker-range (startDate)="startDate($event)" (endDate)="endDate($event)"
+                    style="float: right"></app-date-picker-range>
+                  <app-multiple-selection style="float: right" class="mx-4" (selectionDataFromToppingList)="
                       selectionDataFromToppingList($event)
-                    "
-                    [toppingList]="toppingList"
-                  ></app-multiple-selection>
-                  <app-table
-                    [tableData]="filterResult"
-                    [tableHeaderNames]="tableHeaderNames"
-                    (filterValue)="filterValue($event)"
-                    (sortState)="sortState($event)"
-                  ></app-table>
-                  <app-pagination
-                    [totalPages]="totalPages"
-                    [pageSize]="pageSize"
-                    [pageNumber]="pageNumber"
-                    #paginator
-                  ></app-pagination>
+                    " [toppingList]="toppingList"></app-multiple-selection>
+                  <app-table [tableData]="filterResult" [tableHeaderNames]="tableHeaderNames"
+                    (filterValue)="filterValue($event)" (sortState)="sortState($event)"></app-table>
+                  <app-pagination [pagination]="pagination" #paginator (pageChange)="paginationChanged($event)">
+                  </app-pagination>
                 </div>
               </div>
             </div>
