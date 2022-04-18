@@ -50,7 +50,7 @@ export class ManageDashboardPageComponent implements OnInit {
     pageSizeOptions: [5, 10, 20]
   }
 
-  tableHeaderNames: string[] = ['position', 'name', 'weight', 'symbol', 'Date'];
+  tableHeaderNames: string[] = ['position', 'name', 'weight', 'symbol', 'date'];
 
   filterResult = this.getItems([...this.dataSource])
 

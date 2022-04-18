@@ -8,7 +8,12 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!(i === 1)" sortActionDescription="Sort">
         {{ tableHeaderName }}
       </th>
-      <td mat-cell *matCellDef="let element">{{ element[tableHeaderName] }}</td>
+      <ng-container *ngIf="tableHeaderName != 'date'">
+        <td mat-cell *matCellDef="let element" >{{ element[tableHeaderName] }}</td>
+      </ng-container>
+      <ng-container *ngIf="tableHeaderName == 'date'">
+        <td mat-cell *matCellDef="let element" >{{ element[tableHeaderName] | date}}</td>
+      </ng-container>
     </ng-container>
   </ng-container>
 
