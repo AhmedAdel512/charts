@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-pagination',
@@ -7,12 +7,22 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   // MatPaginator Inputs
-  @Input() totalPages : number;
-  @Input() pageSize : number;
-  @Input() pageNumber : number;
+  @Input() totalPages: number;
+  @Input() pageSize: number;
+  @Input() pageNumber: number;
   @Input() length: any[]
   @Input() pageSizeOptions: number[]
+
+  @Input() pagination = {
+    pageIndex: 1,
+    pageSize: 1,
+    totalPages: 1,
+    totalItems: 1,
+    pageSizeOptions:null
+  }
 
   // MatPaginator Output
   // pageEvent: PageEvent;
@@ -22,6 +32,8 @@ export class PaginationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // to change paginator labels
+    this.paginator._intl.itemsPerPageLabel = 'Show'
   }
 
   // setPageSizeOptions(setPageSizeOptionsInput: string) {
