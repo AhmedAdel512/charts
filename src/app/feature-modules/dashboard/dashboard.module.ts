@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MultipleSelectionComponent } from './components/multiple-selection/multiple-selection.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { MatSortModule } from '@angular/material/sort';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatSortModule } from '@angular/material/sort';
     TableComponent,
     DatePickerRangeComponent,
     MultipleSelectionComponent,
-    PaginationComponent
+    PaginationComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
