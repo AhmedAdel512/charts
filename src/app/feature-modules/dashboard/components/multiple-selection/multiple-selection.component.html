@@ -1,6 +1,6 @@
-<mat-form-field appearance="fill">
-    <mat-label>Toppings</mat-label>
-    <mat-select [formControl]="toppings" multiple (selectionChange)="selectedData($event)">
-      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+<mat-form-field >
+    <mat-label>{{placeHolder}}</mat-label>
+    <mat-select multiple (selectionChange)="selectedData($event)">
+      <mat-option *ngFor="let item of list" [value]="item">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>

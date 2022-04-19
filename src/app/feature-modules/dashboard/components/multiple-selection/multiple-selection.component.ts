@@ -8,12 +8,11 @@ import { FormControl } from '@angular/forms';
 })
 export class MultipleSelectionComponent implements OnInit {
 
- toppings = new FormControl();
-  @Input() toppingList: string[]
+  @Input() list: string[]
+  @Input() placeHolder: string;
   @Output() public selectionDataFromToppingList = new EventEmitter<string[]>();
 
 
-  // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   constructor() { }
 
