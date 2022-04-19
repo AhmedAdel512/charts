@@ -8,7 +8,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
-import { HomeComponent } from './home/home.component';
 import { NgChartsModule } from 'ng2-charts';
 import { AutoLoginComponent } from './component/auto-login/auto-login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +17,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     AutoLoginComponent
   ],
   imports: [

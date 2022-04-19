@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ChartData } from 'chart.js';
 import { AuthService } from 'src/app/shared/service/auth.service';
+import { CLIENTS } from '../../../../../db';
 
 @Component({
   selector: 'app-manage-dashboard-page',
@@ -205,34 +206,8 @@ export class ManageDashboardPageComponent implements OnInit {
     };
     this.getTableData(false)
   }
+  public pieChartClientsData: ChartData<'pie', number[], string | string[]> = CLIENTS
 
-  pieChartCompaniesData: ChartData<'pie', number[], string | string[]> = {
-    // labels: [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ],
-    labels: ['Flairstech', 'A', 'B', 'c'],
-    datasets: [
-      {
-        data: [100, 200, 300, 400],
-        backgroundColor: [
-          '#6FC8Ce',
-          'rgba(50, 73, 87, 0.5)',
-          'rgba(26, 163, 255, 0.5)',
-          'rgb(21,76,121)',
-        ],
-        hoverBackgroundColor: [
-          '#6FC8Ce',
-          'rgba(50, 73, 87, 0.5)',
-          'rgba(26, 163, 255, 0.5)',
-          'rgb(21,76,121)',
-        ],
-        hoverBorderColor: [
-          '#6FC8Ce',
-          'rgba(50, 73, 87, 0.5)',
-          'rgba(26, 163, 255, 0.5)',
-          'rgb(21,76,121)',
-        ],
-      },
-    ],
-  };
 
   public barChartData: ChartData<'bar'> = {
     labels: ['2006', '2007', '2008', '2009', '2010'],
