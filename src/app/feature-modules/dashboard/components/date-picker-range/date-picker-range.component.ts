@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-date-picker-range',
@@ -10,11 +9,9 @@ export class DatePickerRangeComponent implements OnInit {
 
   @Output() public startDate = new EventEmitter<string>();
   @Output() public endDate = new EventEmitter<string>();
+  public from = null;
+  public to = null;
 
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl(),
-  });
   constructor() { }
 
   ngOnInit(): void {
