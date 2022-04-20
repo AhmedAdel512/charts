@@ -40,21 +40,14 @@
                 <!-- <div class="container-fluid"> -->
                 <div class="row mb-2">
                   <div class="col-sm-12">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0 text-teal text-bold">Dashboard</h1>
                   </div>
                 </div>
-                <!-- /.row -->
-                <!-- </div> -->
-                <!-- /.container-fluid -->
+
               </div>
-              <!-- /.content-header -->
 
               <!-- Small boxes (Stat box) -->
               <div class="row">
-                <div class="col-lg-3 col-6">
-                  <!-- small box -->
-                  <app-boxes title="New Orders" textColor="text-white" value="150" bgColor="blue"></app-boxes>
-                </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6" *ngFor="let box of boxes">
                   <app-boxes [title]="box.title" [textColor]="box.textColor" [value]="box.value"
@@ -67,11 +60,11 @@
               <div class="row">
                 <div class="col-md-6">
                   <!-- PIE CHART -->
-                  <app-pie-chart title="Companies Data" [pieChartData]="pieChartClientsData"
+                  <app-pie-chart title="Companies" [pieChartData]="pieChartClientsData"
                     (pieChartSendDate)="pieChartSendDate($event)" [enableRemove]="false"></app-pie-chart>
                 </div>
                 <div class="col-md-6">
-                  <app-bar-chart title="Company Sales per years" [barChartData]="barChartData"
+                  <app-bar-chart [title]="client + ' Resources per years'" [barChartData]="barChartPortfolios"
                     (barChartSendData)="barChartSendData($event)" [enableRemove]="false"></app-bar-chart>
                 </div>
               </div>
@@ -79,7 +72,7 @@
                 <div class="col-md-12 d-flex align-items-end justify-content-between">
                   <app-filter (filterValue)="onSearchChange($event)"></app-filter>
                   <div >
-                    <app-multiple-selection class="mx-4" placeHolder="Symbol" (selectionDataFromToppingList)="
+                    <app-multiple-selection class="mx-4" placeHolder="Filter by Status" (selectionDataFromToppingList)="
                     selectionDataFromToppingList($event)
                   " [list]="dropdownList"></app-multiple-selection>
                     <app-date-picker-range label="Date Filter" (startDate)="startDate($event)" (endDate)="endDate($event)">
@@ -90,7 +83,7 @@
               </div>
               <div class="row pb-5">
                 <div class="col-12">
-                  <app-table [tableData]="filterResult" [tableHeaderNames]="tableHeaderNames"
+                  <app-table [tableData]="filterResult"  [headers]="headers"
                     (sortState)="onTableHeaderSortChange($event)"></app-table>
                   <app-pagination [pagination]="pagination" #paginator (pageChange)="paginationChanged($event)">
                   </app-pagination>
