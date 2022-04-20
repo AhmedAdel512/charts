@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
@@ -6,18 +6,23 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
 
 
   @Input() tableHeaderNames: string[];
+  @Input() headers: any[]
   @Input() showFirstLastButtons: boolean;
   @Input() sort: MatSort;
   @Input() tableData: any[];
   @Output() public sortState = new EventEmitter<Event>();
+  public displayedColumns: string[];
 
 
-
-  constructor() { }
+  constructor() { 
+  }
+  ngOnInit(): void {
+    this.displayedColumns = this.headers.map(col=> col.key)
+  }
 
   /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: any) {
