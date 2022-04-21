@@ -2,10 +2,10 @@ export const CLIENTS = {
   labels: ['FlairsTech', 'ITWorx', 'Nexus', 'Valeo'],
   datasets: [
     {
-      data: [500, 200, 300, 400],
-      backgroundColor: ['#6FC8Ce', '#FE9E38', '#F1948A', '#3498DB'],
-      hoverBackgroundColor: ['#6FC8Ce', '#FEAD38', '#FFA1B5', '#85C1E9 '],
-      hoverBorderColor: ['#6FC8Ce', '#FE9E38', '#F1948A', '#3498DB'],
+      data: [500, 200, 300, 370],
+      backgroundColor: ['#35CEA1', '#FE9E38', '#EB6455', '#3498DB'],
+      hoverBackgroundColor: ['#74ddbe', '#febb73', '#ed7467', '#85C1E9 '],
+      hoverBorderColor: ['#74ddbe', '#febb73', '#ed7467', '#85C1E9'],
       hoverBorderWidth: 2,
     },
   ],
@@ -19,14 +19,33 @@ export const ACCOUNTS = [
     portfolios: {
       labels: ['2016', '2017', '2018', '2019', '2022'],
       datasets: [
-        { data: [16, 25, 18, 24, 22], label: 'Front End' },
-        { data: [10, 16, 15, 23, 28], label: ' Back End' },
-        { data: [13, 17, 20, 19, 15], label: 'Testing' },
+        {
+          data: [16, 25, 18, 24, 22],
+          label: 'Front End',
+          backgroundColor: '#a4b3b9',
+          hoverBackgroundColor: '#4b5b62',
+          borderColor: '#a4b3b9'
+        },
+        {
+          data: [10, 16, 15, 23, 28],
+          label: ' Back End',
+          backgroundColor: '#68d4cd',
+          hoverBackgroundColor: '#2c9a93',
+          borderColor: '#68d4cd'
+        },
+        {
+          data: [13, 17, 20, 19, 15],
+          label: 'Testing',
+          backgroundColor: '#8b75d7',
+          hoverBackgroundColor: '#5135b5',
+          borderColor: '#8b75d7'
+        },
         {
           data: [8, 10, 12, 16, 10],
           label: 'BA',
           backgroundColor: '#82E0AA',
           hoverBackgroundColor: '#58D68D',
+          borderColor: '#82E0AA'
         },
       ],
     },
