@@ -15,8 +15,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 }
 .bg-flamingo{
-    background-color: #f4632e !important;
+    background-color: #FE9E38 !important;
 }
 .text-flamingo{
-    color: #f4632e !important;
+    color: #FE9E38 !important;
+}
+.text-bold{
+    font-weight: 600 !important;
 }
