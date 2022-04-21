@@ -6,3 +6,10 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-tint{
+    background:#eb6455;
+}
+.bg-flamingo{
+    background-color: #f4632e;
+}
