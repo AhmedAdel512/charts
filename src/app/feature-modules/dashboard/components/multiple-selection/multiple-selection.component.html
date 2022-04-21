@@ -1,6 +1,6 @@
 <mat-form-field >
     <mat-label>{{placeHolder}}</mat-label>
-    <mat-select multiple (selectionChange)="selectedData($event)">
+    <mat-select multiple (selectionChange)="selectedData($event)" [(ngModel)]="types">
       <mat-option *ngFor="let item of list" [value]="item">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>

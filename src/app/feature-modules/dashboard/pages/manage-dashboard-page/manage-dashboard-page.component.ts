@@ -86,17 +86,19 @@ export class ManageDashboardPageComponent implements OnInit {
         this.data = [...account.employees];
         this.boxes = [...account.info];
         this.barChartPortfolios = { ...account.portfolios };
+
         this.pagination = {
           ...this.pagination,
           pageIndex: 0,
           totalItems: this.data.length,
           pageSize: 5
         }
+        this.resetFiltration();
         this.getTableData()
       }
     }
   }
-
+  
   public barChartSendData(value) {
     if (value.length > 0) {
       let chartTitle = this.barChartPortfolios.datasets[value[0].datasetIndex].label;
@@ -119,7 +121,18 @@ export class ManageDashboardPageComponent implements OnInit {
     // Filter table data with Date
     tableData = tableData.filter(emp => year == new Date(emp.date).getFullYear())
     this.data = tableData;
+    this.resetFiltration();
     this.getTableData()
+  }
+
+  public resetFiltration() {
+    this.filtration = {
+      ...this.filtration,
+      types: [],
+      searchQuery: '',
+      from: null,
+      to: null
+    }
   }
 
 
@@ -190,7 +203,7 @@ export class ManageDashboardPageComponent implements OnInit {
     this.filterResult = this.paginateTableData(result)
   }
 
-  public selectionDataFromToppingList(value: any[]) {
+  public multipleSelectionChange(value: any[]) {
     this.filtration = {
       ...this.filtration,
       types: value

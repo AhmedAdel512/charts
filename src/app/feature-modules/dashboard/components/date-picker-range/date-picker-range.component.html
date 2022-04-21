@@ -1,8 +1,8 @@
 <mat-form-field>
   <mat-label>{{label}}</mat-label>
   <mat-date-range-input [rangePicker]="picker">
-    <input matStartDate placeholder="Start" (dateInput)="getStartDate($event.value)">
-    <input matEndDate placeholder="End" (dateInput)="getEndDate($event.value)">
+    <input matStartDate placeholder="Start" [(ngModel)]="from" (dateInput)="getStartDate($event.value)">
+    <input matEndDate placeholder="End" [(ngModel)]="to" (dateInput)="getEndDate($event.value)">
   </mat-date-range-input>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-date-range-picker #picker></mat-date-range-picker>
