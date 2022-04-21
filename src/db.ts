@@ -29,6 +29,8 @@ export const CLIENTS = {
 export const ACCOUNTS = [
    {
       client: 'FlairsTech',
+      bgColor:'bg-gradient-teal',
+      textColor:'text-teal',
       portfolios: {
          labels: ['2016', '2017', '2018', '2019', '2022'],
          datasets: [
@@ -472,6 +474,8 @@ export const ACCOUNTS = [
    },
    {
       client: 'ITWorx',
+      bgColor:'bg-warning bg-opacity-25',
+      textColor:'text-warning',
       portfolios: {
          labels: ['2010', '2011', '2012', '2013', '2014'],
          datasets: [
@@ -486,25 +490,25 @@ export const ACCOUNTS = [
             title: 'Total Resources',
             value: 55,
             // bgColor: '#FDD835',
-            bgColor: 'bg-flamingo',
+            bgColor: 'bg-warning bg-opacity-25',
             textColor: 'text-white',
          },
          {
             title: 'Revenue',
             value: '20,301.56',
-            bgColor: 'bg-flamingo',
+            bgColor: 'bg-warning bg-opacity-25',
             textColor: 'text-white',
          },
          {
             title: 'Active Projects',
             value: '20 / 120',
-            bgColor: 'bg-flamingo',
+            bgColor: 'bg-warning bg-opacity-25',
             textColor: 'text-white',
          },
          {
             title: 'Active Tickets',
             value: '108 / 560',
-            bgColor: 'bg-flamingo',
+            bgColor: 'bg-warning bg-opacity-25',
             textColor: 'text-white',
          },
       ],
@@ -602,25 +606,25 @@ export const ACCOUNTS = [
                {
                   title: 'Total Resources',
                   value: 15,
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Revenue',
                   value: '5,280.56',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Projects',
                   value: '2 / 120',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Tickets',
                   value: '56 / 560',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
             ]
@@ -631,25 +635,25 @@ export const ACCOUNTS = [
                {
                   title: 'Total Resources',
                   value: 15,
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Revenue',
                   value: '3,131.50',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Projects',
                   value: '8 / 120',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Tickets',
                   value: '70 / 560',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
             ]
@@ -660,25 +664,25 @@ export const ACCOUNTS = [
                {
                   title: 'Total Resources',
                   value: 12,
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Revenue',
                   value: '6,131.50',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Projects',
                   value: '80 / 120',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Tickets',
                   value: '150 / 560',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
             ]
@@ -689,25 +693,25 @@ export const ACCOUNTS = [
                {
                   title: 'Total Resources',
                   value: 66,
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Revenue',
                   value: '11,11.50',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Projects',
                   value: '120 / 66',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Tickets',
                   value: '70 / 60',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
             ]
@@ -718,25 +722,25 @@ export const ACCOUNTS = [
                {
                   title: 'Total Resources',
                   value: 55,
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Revenue',
                   value: '44,55.50',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Projects',
                   value: '11 / 20',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Tickets',
                   value: '66 / 560',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
             ]
@@ -747,25 +751,25 @@ export const ACCOUNTS = [
                {
                   title: 'Total Resources',
                   value: 22,
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Revenue',
                   value: '8,131.50',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Projects',
                   value: '74 / 120',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
                {
                   title: 'Active Tickets',
                   value: '30 / 560',
-                  bgColor: 'bg-flamingo',
+                  bgColor: 'bg-warning bg-opacity-25',
                   textColor: 'text-white',
                },
             ]
@@ -774,6 +778,8 @@ export const ACCOUNTS = [
    },
    {
       client: 'Nexus',
+      bgColor:'bg-tint',
+      textColor:'text-tint',
       portfolios: {
          labels: ['2017', '2018', '2019', '2020', '2021'],
          datasets: [

@@ -19,6 +19,7 @@ export class BarChartComponent implements OnInit {
   @Input() barChartData: ChartData<'bar'> = { labels: [], datasets: [] };
   @Input() enableRemove: boolean = false;
   @Input() enableMinimize: boolean = true;
+  @Input() bgColor: string = 'bg-gradient-teal'
   @Output() public barChartSendData = new EventEmitter<Event>();
 
   public barChartPlugins = [];

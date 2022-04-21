@@ -8,8 +8,15 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .bg-tint{
-    background:#eb6455;
+    background:#eb6455 !important;
+}
+.text-tint{
+    color: #eb6455 !important;
+
 }
 .bg-flamingo{
-    background-color: #f4632e;
+    background-color: #f4632e !important;
+}
+.text-flamingo{
+    color: #f4632e !important;
 }

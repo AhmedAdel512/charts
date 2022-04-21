@@ -9,6 +9,7 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 export class PieChartComponent implements OnInit {
   @Input() title: string = 'Pie Chart';
+  @Input() bgColor: string = 'bg-gradient-teal'
   @Input() pieChartData: ChartData<'pie'> = { datasets: [], labels: [] };
   @Input() enableRemove: boolean = false;
   @Input() enableMinimize: boolean = true;

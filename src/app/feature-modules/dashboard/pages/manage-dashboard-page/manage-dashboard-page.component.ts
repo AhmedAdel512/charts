@@ -65,6 +65,8 @@ export class ManageDashboardPageComponent implements OnInit {
   public barChartPortfolios: ChartData<'bar'> = { ...DB.ACCOUNTS[0].portfolios }
   public boxes: any[] = DB.ACCOUNTS[0].info
   public client: string = DB.ACCOUNTS[0].client
+  public bgColor: string = DB.ACCOUNTS[0].bgColor
+  public textColor: string = DB.ACCOUNTS[0].textColor
   constructor(
     private _oAuthService: AuthService,
 
@@ -85,6 +87,8 @@ export class ManageDashboardPageComponent implements OnInit {
         this.client = account.client;
         this.data = [...account.employees];
         this.boxes = [...account.info];
+        this.bgColor = account.bgColor
+        this.textColor = account.textColor
         this.barChartPortfolios = { ...account.portfolios };
 
         this.pagination = {
@@ -98,7 +102,7 @@ export class ManageDashboardPageComponent implements OnInit {
       }
     }
   }
-  
+
   public barChartSendData(value) {
     if (value.length > 0) {
       let chartTitle = this.barChartPortfolios.datasets[value[0].datasetIndex].label;

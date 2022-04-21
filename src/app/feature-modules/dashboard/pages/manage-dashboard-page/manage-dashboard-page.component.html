@@ -40,7 +40,7 @@
                 <!-- <div class="container-fluid"> -->
                 <div class="row mb-2">
                   <div class="col-sm-12">
-                    <h1 class="m-0 text-teal text-bold">Dashboard</h1>
+                    <h1 class="m-0 text-bold" [ngClass]="textColor">Dashboard</h1>
                   </div>
                 </div>
 
@@ -60,22 +60,25 @@
               <div class="row">
                 <div class="col-md-6">
                   <!-- PIE CHART -->
-                  <app-pie-chart title="Companies" [pieChartData]="pieChartClientsData"
+                  <app-pie-chart title="Companies" [bgColor]="bgColor" [pieChartData]="pieChartClientsData"
                     (pieChartSendDate)="pieChartSendDate($event)" [enableRemove]="false"></app-pie-chart>
                 </div>
                 <div class="col-md-6">
-                  <app-bar-chart [title]="client + ' Resources per years'" [barChartData]="barChartPortfolios"
-                    (barChartSendData)="barChartSendData($event)" [enableRemove]="false"></app-bar-chart>
+                  <app-bar-chart [title]="client + ' Resources per years'" [bgColor]="bgColor"
+                    [barChartData]="barChartPortfolios" (barChartSendData)="barChartSendData($event)"
+                    [enableRemove]="false"></app-bar-chart>
                 </div>
               </div>
               <div class="row bg-white rounded-lg px-3 shadow border border-1 m-0 mb-2">
                 <div class="col-md-12 d-flex align-items-end justify-content-between">
-                  <app-filter (filterValue)="onSearchChange($event)" [searchQuery]="filtration.searchQuery"></app-filter>
-                  <div >
+                  <app-filter (filterValue)="onSearchChange($event)" [searchQuery]="filtration.searchQuery">
+                  </app-filter>
+                  <div>
                     <app-multiple-selection class="mx-4" placeHolder="Filter by Status" (onSelectChange)="
                     multipleSelectionChange($event)
                   " [list]="dropdownList" [types]="filtration.types"></app-multiple-selection>
-                    <app-date-picker-range label="Date Filter" [from]="filtration.from" [to]="filtration.to" (startDate)="startDate($event)" (endDate)="endDate($event)">
+                    <app-date-picker-range label="Date Filter" [from]="filtration.from" [to]="filtration.to"
+                      (startDate)="startDate($event)" (endDate)="endDate($event)">
                     </app-date-picker-range>
                   </div>
 
@@ -83,7 +86,7 @@
               </div>
               <div class="row pb-5">
                 <div class="col-12">
-                  <app-table [tableData]="filterResult"  [headers]="headers"
+                  <app-table [tableData]="filterResult" [headers]="headers"
                     (sortState)="onTableHeaderSortChange($event)"></app-table>
                   <app-pagination [pagination]="pagination" #paginator (pageChange)="paginationChanged($event)">
                   </app-pagination>
