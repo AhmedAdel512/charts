@@ -11,6 +11,7 @@ import { LoginComponent } from './component/login/login.component';
 import { NgChartsModule } from 'ng2-charts';
 import { AutoLoginComponent } from './component/auto-login/auto-login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatCheckboxModule,
     OAuthModule.forRoot(),
     BrowserAnimationsModule
   ],

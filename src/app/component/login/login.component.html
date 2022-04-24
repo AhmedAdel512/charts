@@ -1,3 +1,67 @@
-<div class=" text-center login d-flex justify-content-center align-items-center">
-   <button class="px-5 py-2 btn btn-dark" (click)="logIn()">Login</button>
+<div class="text-center login d-flex justify-content-center align-items-center">
+  <!-- <button class="px-5 py-2 btn btn-dark" (click)="logIn()">Login</button> -->
+
+  <form
+    class="modal-content animate"
+    [formGroup]="LoginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="container">
+      <div class="container">
+        <div class="imgcontainer">
+          <img
+            src="../../../assets/img/logo-01-1.png"
+            alt="Avatar"
+            class="avatar"
+          />
+        </div>
+        <h3>LOGIN TO YOUR ACCOUNT</h3>
+        <div class="col-sm-12">
+          <input ngModel
+            type="email"
+            placeholder="Email Address"
+            formControlName="email"
+            name="email"
+            required
+          />
+        </div>
+
+        <span
+          class="text-danger mb-2" style="float: left;"
+          *ngIf="LoginForm.controls.email.errors?.pattern"
+        >
+          Please Enter Valid Email
+        </span>
+        <div class="col-sm-12">
+          <input ngModel
+            type="password"
+            placeholder="Password"
+            formControlName="Password"
+            name="Password"
+            required
+          />
+
+          <span
+            class="text-danger mb-2"
+            *ngIf="LoginForm.controls.Password.errors?.pattern"
+          >
+            Password should be 8 characters or more
+          </span>
+        </div>
+
+        <div class="row mb-4 mt-2">
+          <div class="col-sm-6 d-flex">
+            <!-- Checkbox -->
+            <mat-checkbox class="example-margin"><span>Remember me</span></mat-checkbox>
+          </div>
+
+          <div class="col-sm-6">
+            <!-- Simple link -->
+            <a href="#!">Forgot password?</a>
+          </div>
+        </div>
+        <button class="mb-4" [disabled]="!LoginForm.valid" type="submit">LOGIN</button>
+      </div>
+    </div>
+  </form>
 </div>
