@@ -32,11 +32,20 @@
               <!-- Content Header (Page header) -->
               <div class="content-header">
                 <!-- <div class="container-fluid"> -->
-                <div class="row mb-2">
-                  <div class="col-sm-12">
-                    <h1 class="m-0 text-bold" [ngClass]="textColor">
+                <div class="row">
+                  <div class="col-sm-12 d-flex justify-content-between">
+                    <h1 class="m-0 text-bold pt-3">
                       Dashboard
                     </h1>
+                    <app-date-picker-range
+                    label="Date Filter"
+                    [from]="filtration.from"
+                    [to]="filtration.to"
+                    (startDate)="startDate($event)"
+                    (endDate)="endDate($event)"
+                  >
+                  </app-date-picker-range>
+
                   </div>
                 </div>
               </div>
@@ -97,14 +106,14 @@
                       [list]="dropdownList"
                       [types]="filtration.types"
                     ></app-multiple-selection>
-                    <app-date-picker-range
+                    <!-- <app-date-picker-range
                       label="Date Filter"
                       [from]="filtration.from"
                       [to]="filtration.to"
                       (startDate)="startDate($event)"
                       (endDate)="endDate($event)"
                     >
-                    </app-date-picker-range>
+                    </app-date-picker-range> -->
                   </div>
                 </div>
               </div>

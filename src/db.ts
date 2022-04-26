@@ -1,10 +1,18 @@
 export const users = [
   {
+    email: 'ahmed_adel512@yahoo.com',
+    name: 'Ahmed',
+    title: 'Software',
+    Password: '12345678',
+    pic: '../../../assets/img/circled-user-male-skin-type-1-2.png',
+  },
+  {
+    email: 'ahmedadelomar440@gmail.com',
+    Password: '12345678',
     name: 'Ahmed Adel',
     title: 'Software Engineer',
-    Password: '12345678',
     pic: '../../../assets/img/spidy.png',
-  }
+  },
 ]
 
 export const CLIENTS = {

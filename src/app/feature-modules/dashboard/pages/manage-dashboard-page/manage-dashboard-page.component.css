@@ -6,6 +6,10 @@
     display: block;
 }
 
+h1 {
+    color: #363636;
+}
+
 /* .active{
     color: white;
     background-color: red;

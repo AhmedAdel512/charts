@@ -22,7 +22,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { MatSortModule } from '@angular/material/sort';
 import { FilterComponent } from './components/filter/filter.component';
 import { MatIconModule } from '@angular/material/icon';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component'
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { RequestsComponent } from './components/requests/requests.component'
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component'
     MultipleSelectionComponent,
     PaginationComponent,
     FilterComponent,
-    NavBarComponent
+    NavBarComponent,
+    RequestsComponent
   ],
   imports: [
     CommonModule,

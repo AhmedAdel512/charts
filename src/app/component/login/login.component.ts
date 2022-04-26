@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/shared/service/auth.service';
+import * as DB from '../../../db';
 
 @Component({
   selector: 'app-login',
@@ -12,27 +13,16 @@ import { AuthService } from 'src/app/shared/service/auth.service';
 export class LoginComponent implements OnInit {
   LoginForm: FormGroup;
 
-  users = [
-    {
-      email: 'ahmed_adel512@yahoo.com',
-      Password: 'ahmedadel',
-      pic: '../../../assets/img/user.png',
-    },
-    {
-      email: 'ahmedadelomar440@gmail.com',
-      Password: '12345678',
-      pic: '../../../assets/img/circled-user-male-skin-type-1-2.png',
-    },
-  ];
+  users = DB.users
   constructor(private _authService: AuthService, private router: Router) {
     this.LoginForm = new FormGroup({
-      email: new FormControl('', [
+      email: new FormControl(null, [
         Validators.required,
         Validators.pattern(
           /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         ),
       ]),
-      Password: new FormControl('', [
+      Password: new FormControl(null, [
         Validators.required,
         Validators.minLength(8),
       ]),

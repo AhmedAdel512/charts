@@ -76,6 +76,7 @@ export class ManageDashboardPageComponent implements OnInit {
   public boxes: any[] = DB.ACCOUNTS[0].info;
   public client: string = DB.ACCOUNTS[0].client;
   public bgColor: string = DB.ACCOUNTS[0].bgColor;
+  // public textColor: string = DB.ACCOUNTS[0].textColor;
   public textColor: string = DB.ACCOUNTS[0].textColor;
   constructor(private _oAuthService: AuthService) {}
   ngOnInit(): void {
