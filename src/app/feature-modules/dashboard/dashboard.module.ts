@@ -21,6 +21,8 @@ import { MultipleSelectionComponent } from './components/multiple-selection/mult
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { MatSortModule } from '@angular/material/sort';
 import { FilterComponent } from './components/filter/filter.component';
+import { MatIconModule } from '@angular/material/icon';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component'
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { FilterComponent } from './components/filter/filter.component';
     DatePickerRangeComponent,
     MultipleSelectionComponent,
     PaginationComponent,
-    FilterComponent
+    FilterComponent,
+    NavBarComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +51,8 @@ import { FilterComponent } from './components/filter/filter.component';
     MatDatepickerModule,
     MatSelectModule,
     FormsModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule
   ],
   providers: [
     DatePipe

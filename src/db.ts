@@ -1,3 +1,12 @@
+export const users = [
+  {
+    name: 'Ahmed Adel',
+    title: 'Software Engineer',
+    Password: '12345678',
+    pic: '../../../assets/img/spidy.png',
+  }
+]
+
 export const CLIENTS = {
   labels: ['FlairsTech', 'ITWorx', 'Nexus', 'Valeo'],
   datasets: [
@@ -16,6 +25,7 @@ export const ACCOUNTS = [
     client: 'FlairsTech',
     bgColor: 'bg-gradient-teal',
     textColor: 'text-teal',
+
     portfolios: {
       labels: ['2016', '2017', '2018', '2019', '2022'],
       datasets: [
@@ -24,28 +34,28 @@ export const ACCOUNTS = [
           label: 'Front End',
           backgroundColor: '#a4b3b9',
           hoverBackgroundColor: '#4b5b62',
-          borderColor: '#a4b3b9'
+          borderColor: '#a4b3b9',
         },
         {
           data: [10, 16, 15, 23, 28],
           label: ' Back End',
           backgroundColor: '#68d4cd',
           hoverBackgroundColor: '#2c9a93',
-          borderColor: '#68d4cd'
+          borderColor: '#68d4cd',
         },
         {
           data: [13, 17, 20, 19, 15],
           label: 'Testing',
           backgroundColor: '#8b75d7',
           hoverBackgroundColor: '#5135b5',
-          borderColor: '#8b75d7'
+          borderColor: '#8b75d7',
         },
         {
           data: [8, 10, 12, 16, 10],
           label: 'BA',
           backgroundColor: '#82E0AA',
           hoverBackgroundColor: '#58D68D',
-          borderColor: '#82E0AA'
+          borderColor: '#82E0AA',
         },
       ],
     },
@@ -83,6 +93,13 @@ export const ACCOUNTS = [
         email: 'mohamedAhmed@flairstech.com',
         idle: 1,
         date: '2016-02-17T22:00:00.000Z',
+        details:[
+          {
+            key:'Flairstech Mail',
+            value:'test@test.com',
+            type:5 // 5 will equal link
+          }
+        ]
       },
       {
         title: 'Mid-Level Front End',

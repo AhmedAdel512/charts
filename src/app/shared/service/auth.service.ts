@@ -7,8 +7,18 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  currentUser: any = {}
+
   constructor(private _oAuthService: OAuthService) { }
 
+  setCurrentUser(user) {
+    this.currentUser = user
+  }
+
+  getCurrentUser() {
+    return this.currentUser
+  }
+  
   public checkToken() {
     return localStorage.getItem('access_token')
   }

@@ -6,7 +6,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
@@ -17,6 +17,7 @@ import { BaseChartDirective } from 'ng2-charts';
 export class BarChartComponent implements OnInit {
   @Input() title: string = 'Bar Chart';
   @Input() barChartData: ChartData<'bar'> = { labels: [], datasets: [] };
+  @Input() barChartOptions: any
   @Input() enableRemove: boolean = false;
   @Input() enableMinimize: boolean = true;
   @Input() bgColor: string = 'bg-gradient-teal'

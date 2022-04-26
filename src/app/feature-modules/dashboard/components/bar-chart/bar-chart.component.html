@@ -28,6 +28,7 @@
           id="barChart"
           baseChart
           [data]="barChartData"
+          [options]="barChartOptions"
           (chartClick)="pieChartClick($event.active)"
           type="bar"
           style="

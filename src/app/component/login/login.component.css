@@ -13,7 +13,16 @@
 
 }
 
-input[type=email], input[type=password] ,:focus {
+.img-thumbnail {
+  width: 150px;
+  float: left;
+}
+
+.loginWord {
+  display: inline-block;
+}
+
+input[type=email], input[type=password] {
   width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -24,35 +33,18 @@ input[type=email], input[type=password] ,:focus {
   border-color: #d23b28;
 }
 
-/* Set a style for all buttons */
-button {
-  background-color: #d23b28;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: 1px solid;
-  cursor: pointer;
-  width: 85%;
-  border-radius: 5px;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-.form-check-input {
-  border-color: #d23b28;
-}
-
 /* Center the image and position the close button */
 .imgcontainer {
   text-align: left;
   margin: 24px 0 12px 0;
   margin-left: 20px;
-  /* position: relative; */
 }
 
-h3 {
+img.avatar {
+  width: 50%;
+}
+
+.h3 {
   float: left;
   margin-left: 22px;
   font-weight: bold;
@@ -60,7 +52,7 @@ h3 {
 }
 
 .example-margin {
-  margin-left: 25px;
+  /* margin-left: 25px; */
   border-color: #d23b28;
 }
 
@@ -69,22 +61,8 @@ h3 {
   font-weight: normal;
 }
 
-span {
-  margin-left: 25px;
-}
-
-
-img.avatar {
-  width: 40%;
-}
-
-/* .container {
-  padding: 16px;
-} */
-
-span.psw {
-  float: right;
-  padding-top: 16px;
+.span {
+  font-size: 0.7rem;
 }
 
 /* Modal Content/Box */
@@ -92,7 +70,7 @@ span.psw {
   background-color: #fefefe;
   border: 1px solid #888;
   width: 25%; /* Could be more or less, depending on screen size */
-}
+ }
 
 /* Add Zoom Animation */
 .animate {
@@ -110,13 +88,10 @@ span.psw {
   to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
+@media only screen and (max-width: 768px) {
+  .modal-content{
+    width: 35%;
   }
 }
+
+

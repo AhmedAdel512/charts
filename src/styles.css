@@ -4,6 +4,12 @@
     height: 0px !important;
  }
 
+ .active{
+    background-color: red !important;
+    color: white !important;
+    border-radius: 14px 14px 0px 0px;
+ }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

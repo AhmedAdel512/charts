@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { STATUS_ENUM } from './../../models/helper'
-import { ChartData } from 'chart.js';
+import { STATUS_ENUM } from './../../models/helper';
+import { ChartData, ChartOptions } from 'chart.js';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import * as DB from '../../../../../db';
 
@@ -13,39 +13,38 @@ export class ManageDashboardPageComponent implements OnInit {
   public headers: any[] = [
     {
       label: 'Name',
-      key: 'fullName'
+      key: 'fullName',
     },
     {
       label: 'Title',
-      key: 'title'
+      key: 'title',
     },
     {
       label: 'Email',
-      key: 'email'
+      key: 'email',
     },
     {
       label: 'Status',
-      key: 'idle'
+      key: 'idle',
     },
     {
       label: 'Date',
-      key: 'date'
+      key: 'date',
     },
-  ]
-  public data: any[] = DB.ACCOUNTS[0].employees
+  ];
+  public data: any[] = DB.ACCOUNTS[0].employees;
 
-  public filterResult = []
+  public filterResult = [];
 
-  public flag: boolean = false; // flag to swipe up 
+  public flag: boolean = false; // flag to swipe up
   /*___________________ Filtration ____________________*/
   public filtration = {
     searchQuery: '',
     from: null,
     to: null,
     types: [],
-    sort: ''
-  }
-
+    sort: '',
+  };
 
   /*___________________ pagination ____________________*/
 
@@ -56,77 +55,91 @@ export class ManageDashboardPageComponent implements OnInit {
     pageSizeOptions: [5, 10, 20],
   };
 
+  dropdownList: string[] = ['Active', 'Not Active'];
 
-  dropdownList: string[] = ['Active', 'Not Active']
-
-
-
-  public pieChartClientsData: ChartData<'pie', number[], string | string[]> = DB.CLIENTS
-  public barChartPortfolios: ChartData<'bar'> = { ...DB.ACCOUNTS[0].portfolios }
-  public boxes: any[] = DB.ACCOUNTS[0].info
-  public client: string = DB.ACCOUNTS[0].client
-  public bgColor: string = DB.ACCOUNTS[0].bgColor
-  public textColor: string = DB.ACCOUNTS[0].textColor
-  constructor(
-    private _oAuthService: AuthService,
-
-  ) { }
+  public barChartOptions: any = {
+    scales: {
+      xAxes: [
+        {
+          ticks: {
+            minRotation: 50,
+          },
+        },
+      ],
+    },
+  };
+  public pieChartClientsData: ChartData<'pie', number[], string | string[]> =
+    DB.CLIENTS;
+  public barChartPortfolios: ChartData<'bar'> = {
+    ...DB.ACCOUNTS[0].portfolios,
+  };
+  public boxes: any[] = DB.ACCOUNTS[0].info;
+  public client: string = DB.ACCOUNTS[0].client;
+  public bgColor: string = DB.ACCOUNTS[0].bgColor;
+  public textColor: string = DB.ACCOUNTS[0].textColor;
+  constructor(private _oAuthService: AuthService) {}
   ngOnInit(): void {
     setTimeout(() => {
       this.flag = true;
     }, 500);
-
     this.filterResult = this.paginateTableData(this.data);
+
+    // this.currentUser = this._oAuthService.getCurrentUser()
+    // console.log(this.currentUser)
   }
   /* ___________ Chart Functions ___________*/
 
   public pieChartSendDate(value) {
     if (value.length > 0) {
-      let account = DB.ACCOUNTS.find(account => account.client == DB.CLIENTS.labels[value[0].index]);
+      let account = DB.ACCOUNTS.find(
+        (account) => account.client == DB.CLIENTS.labels[value[0].index]
+      );
       if (account) {
         this.client = account.client;
         this.data = [...account.employees];
         this.boxes = [...account.info];
-        this.bgColor = account.bgColor
-        this.textColor = account.textColor
+        this.bgColor = account.bgColor;
+        this.textColor = account.textColor;
         this.barChartPortfolios = { ...account.portfolios };
 
         this.pagination = {
           ...this.pagination,
           pageIndex: 0,
           totalItems: this.data.length,
-          pageSize: 5
-        }
+          pageSize: 5,
+        };
         this.resetFiltration();
-        this.getTableData()
+        this.getTableData();
       }
     }
   }
 
   public barChartSendData(value) {
     if (value.length > 0) {
-      let chartTitle = this.barChartPortfolios.datasets[value[0].datasetIndex].label;
+      let chartTitle =
+        this.barChartPortfolios.datasets[value[0].datasetIndex].label;
       let year = +this.barChartPortfolios.labels[value[0].index];
-      this._barChartYearChanged(chartTitle, year)
+      this._barChartYearChanged(chartTitle, year);
     }
   }
 
-
   private _barChartYearChanged(chartTitle: string, year: number) {
-    let client = DB.ACCOUNTS.find(account => account.client == this.client);
-    client.accountInfoByYear.map(data => {
+    let client = DB.ACCOUNTS.find((account) => account.client == this.client);
+    client.accountInfoByYear.map((data) => {
       if (data.year == year) {
-        this.boxes = [...data.boxes]
+        this.boxes = [...data.boxes];
       }
-    })
+    });
     let tableData = [...client.employees];
     // Filter table data with Title
-    tableData = tableData.filter(emp => emp.title.includes(chartTitle));
+    tableData = tableData.filter((emp) => emp.title.includes(chartTitle));
     // Filter table data with Date
-    tableData = tableData.filter(emp => year == new Date(emp.date).getFullYear())
+    tableData = tableData.filter(
+      (emp) => year == new Date(emp.date).getFullYear()
+    );
     this.data = tableData;
     this.resetFiltration();
-    this.getTableData()
+    this.getTableData();
   }
 
   public resetFiltration() {
@@ -135,29 +148,26 @@ export class ManageDashboardPageComponent implements OnInit {
       types: [],
       searchQuery: '',
       from: null,
-      to: null
-    }
+      to: null,
+    };
   }
 
-
-
   /* ___________ Table Functions ___________*/
-
 
   paginationChanged(ev: any) {
     this.pagination = {
       ...this.pagination,
       ...ev,
     };
-    this.getTableData(false)
+    this.getTableData(false);
   }
 
   public startDate(value: string) {
-    const date = value ? new Date(value).toISOString() : null
+    const date = value ? new Date(value).toISOString() : null;
     this.filtration = {
       ...this.filtration,
-      from: date
-    }
+      from: date,
+    };
   }
 
   public endDate(value: string) {
@@ -165,26 +175,29 @@ export class ManageDashboardPageComponent implements OnInit {
     if (value) {
       date = new Date(value);
       date.setDate(date.getDate() + 1);
-      date = date.toISOString()
+      date = date.toISOString();
     }
     this.filtration = {
       ...this.filtration,
-      to: date
-    }
-    if (value) this.getTableData()
+      to: date,
+    };
+    if (value) this.getTableData();
   }
-
 
   public getTableData(resetPagination: boolean = true) {
     let result = [...this.data];
     // searchQueryFiltration functionality
     result = result.filter((data) =>
-      data.fullName.toLowerCase().includes(this.filtration.searchQuery.trim().toLowerCase())
+      data.fullName
+        .toLowerCase()
+        .includes(this.filtration.searchQuery.trim().toLowerCase())
     );
 
     // Types Filtration functionality
     if (this.filtration.types.length > 0) {
-      result = result.filter(data => this.filtration.types.some(type => STATUS_ENUM[type] === data.idle))
+      result = result.filter((data) =>
+        this.filtration.types.some((type) => STATUS_ENUM[type] === data.idle)
+      );
     }
 
     // sortingFiltration functionality
@@ -195,56 +208,55 @@ export class ManageDashboardPageComponent implements OnInit {
     }
     // Date Filtration functionality
     if (this.filtration.to) {
-      result = result.filter(data => new Date(data.date).toISOString() >= this.filtration.from && new Date(data.date).toISOString() < this.filtration.to)
+      result = result.filter(
+        (data) =>
+          new Date(data.date).toISOString() >= this.filtration.from &&
+          new Date(data.date).toISOString() < this.filtration.to
+      );
     }
     if (resetPagination) {
-
       this.pagination = {
         ...this.pagination,
         pageIndex: 0,
-      }
+      };
     }
-    this.filterResult = this.paginateTableData(result)
+    this.filterResult = this.paginateTableData(result);
   }
 
   public multipleSelectionChange(value: any[]) {
     this.filtration = {
       ...this.filtration,
-      types: value
-    }
-    this.getTableData()
+      types: value,
+    };
+    this.getTableData();
   }
-
-
 
   public onTableHeaderSortChange(value) {
     this.filtration = {
       ...this.filtration,
-      sort: value.direction
-    }
+      sort: value.direction,
+    };
     this.getTableData();
   }
 
   public onSearchChange(value) {
     this.filtration = {
       ...this.filtration,
-      searchQuery: value ? value.trim().toLowerCase() : ''
-    }
-    this.getTableData()
+      searchQuery: value ? value.trim().toLowerCase() : '',
+    };
+    this.getTableData();
   }
 
   public paginateTableData(arr: any[]) {
     this.pagination = {
       ...this.pagination,
-      totalItems: arr.length
-    }
+      totalItems: arr.length,
+    };
     let start = this.pagination.pageSize * this.pagination.pageIndex;
     let end = start + this.pagination.pageSize;
     let result = arr.slice(start, end);
     return [...result];
   }
-
-
 
   logOut() {
     this._oAuthService.logout();
