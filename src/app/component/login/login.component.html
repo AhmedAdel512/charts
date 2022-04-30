@@ -1,93 +1,77 @@
 <div class="text-center login d-flex justify-content-center align-items-center">
   <!-- <button class="px-5 py-2 btn btn-dark" (click)="logIn()">Login</button> -->
-
-  <!-- <div class="row">
-      <form class="form">
-        <div>
-          <img src="../../../assets/img/logo-01-1.png" class="img-thumbnail mb-3">
-        </div>
-        <h3 class="loginWord">LOGIN TO YOUR ACCOUNT</h3>    
-    <div class="mb-3">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <span class="text-danger mb-2" *ngIf="LoginForm.controls.email.errors?.pattern"></span>
-    </div>
-    <div class="mb-3">
-      <input type="password" class="form-control" id="exampleInputPassword1">
-      <span class="text-danger mb-2" *ngIf="LoginForm.controls.Password.errors?.minlength"></span>
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button class="btn btn-primary">Submit</button>
-  </form>
-</div> -->
   <form
     class="modal-content animate"
     [formGroup]="LoginForm"
     (ngSubmit)="onSubmit()"
   >
     <div class="row">
-      <div class="col-10 mx-auto">
-        <div class="imgcontainer">
+      <div class="col-10 mx-auto py-3">
+        <div class="d-flex  mb-3 ml-3">
           <img src="../../../assets/img/logo-01-1.png" class="avatar" />
         </div>
-        <h3 class="h3">LOGIN TO YOUR ACCOUNT</h3>
-        <input
-          type="email"
-          class="form-control"
-          placeholder="Email Address"
-          formControlName="email"
-        />
+        <h3 class="h3 d-flex ml-3">LOGIN TO YOUR ACCOUNT</h3>
+        <div>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email Address"
+            formControlName="email"
+          />
 
-        <div
-          *ngIf="LoginForm.controls['email'].invalid && (LoginForm.controls['email'].dirty || LoginForm.controls['email'].touched)">
-          <div *ngIf="LoginForm.controls['email'].errors.required">
-            <span class="text-danger mb-2"> Please Enter your Email</span>
-          </div>
+          <div
+            class="d-flex ml-3"
+            *ngIf="
+              LoginForm.controls['email'].invalid &&
+              LoginForm.controls['email'].errors &&
+                LoginForm.controls['email'].touched
+            "
+          >
+            <div *ngIf="LoginForm.controls['email'].errors.required">
+              <span class="text-danger mb-2"> Email is Required</span>
+            </div>
 
-          <div *ngIf="LoginForm.controls.email.errors?.pattern">
-            <span class="text-danger mb-2"> Please Enter Valid Email</span>
-          </div>
-        </div>
-
-        <input
-          type="password"
-          placeholder="Password"
-          formControlName="Password"
-          class="form-control"
-        />
-        <div
-          *ngIf="
-            LoginForm.controls['Password'].invalid &&
-            (LoginForm.controls['Password'].dirty ||
-              LoginForm.controls['Password'].touched)
-          "
-        >
-          <div *ngIf="LoginForm.controls['Password'].errors.required">
-            <span class="text-danger mb-2"> Please Enter your Password</span>
-          </div>
-
-          <div *ngIf="LoginForm.controls.Password.errors?.minlength">
-            <span class="text-danger mb-2">
-              Password should be more than 8 characters
-            </span>
+            <div *ngIf="LoginForm.controls.email.errors?.pattern">
+              <span class="text-danger mb-2"> Please Enter Valid Email</span>
+            </div>
           </div>
         </div>
-        <!-- <span
-          class="text-danger mb-2"
-          *ngIf="
-            LoginForm.controls['Password'].invalid &&
-            LoginForm.controls['Password'].dirty
-          "
-        >
-          Password should be 8 characters or more
-        </span> -->
+        <div>
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="Password"
+            class="form-control"
+          />
+          <div
+            class="d-flex ml-3"
+            *ngIf="
+              LoginForm.controls['Password'].invalid &&
+              LoginForm.controls['Password'].errors &&
+                LoginForm.controls['Password'].touched
+            "
+          >
+            <div *ngIf="LoginForm.controls['Password'].errors.required">
+              <span class="text-danger mb-2"> Password is Required</span>
+            </div>
+
+            <div *ngIf="LoginForm.controls.Password.errors?.minlength">
+              <span class="text-danger mb-2">
+                Password should be more than 8 characters
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex ml-3" *ngIf="inCorrectEmailOrPassword">
+          <span class="text-danger mb-2"> InCorrect Email Or Password </span>
+        </div>
 
         <div class="row mb-4 mt-2 col-12">
           <div class="col-12 col-md-6">
-            <mat-checkbox class="example-margin"
-              ><span class="span">Remember me</span></mat-checkbox
+            <mat-checkbox class="example-margin d-flex ml-2" formControlName="rememberMe"
+            ><span class="span"
+                >Remember me</span
+              ></mat-checkbox
             >
           </div>
 
@@ -95,13 +79,16 @@
             <a class="span" href="#!">Forgot password?</a>
           </div>
         </div>
-        <button
-          [disabled]="!LoginForm.valid"
-          class="btn btn-danger mb-4"
-          style="width: 90%"
-        >
-          LOGIN
-        </button>
+        <div class="px-3 ">
+
+          <button
+            [disabled]="!LoginForm.valid"
+            class="btn btn-danger w-100"
+            
+          >
+            LOGIN
+          </button>
+        </div>
       </div>
     </div>
   </form>

@@ -5,7 +5,6 @@ import { ManageDashboardPageComponent } from './pages/manage-dashboard-page/mana
 
 const routes: Routes = [
   { path: '', component: ManageDashboardPageComponent },
-  { path: 'requests', component: RequestsComponent }
 ];
 
 @NgModule({

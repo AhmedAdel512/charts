@@ -11,9 +11,10 @@ import * as DB from '../../../db';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  inCorrectEmailOrPassword: boolean = false;
   LoginForm: FormGroup;
 
-  users = DB.users
+  users = DB.users;
   constructor(private _authService: AuthService, private router: Router) {
     this.LoginForm = new FormGroup({
       email: new FormControl(null, [
@@ -26,32 +27,29 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
       ]),
+      rememberMe: new FormControl(false),
     });
   }
 
   ngOnInit() {}
-
+  public show() {
+    console.log(this.LoginForm.value);
+  }
   onSubmit() {
-    this.users.find((user) => {
-      console.log(user);
-      console.log(
-        user.email === this.LoginForm.value.email,
-        this.LoginForm.value.email
-      );
-      console.log(
-        user.Password === this.LoginForm.value.Password,
-        this.LoginForm.value.Password
-      );
-      if (
-        user.email === this.LoginForm.value.email &&
-        user.Password === this.LoginForm.value.Password
-      ) {
-        console.log('in if condition')
-        this._authService.setCurrentUser({ ...user });
-        localStorage.setItem('access_token', '123')
-        this.router.navigate(['/home'])
-      }
-    });
+    let x = this.users.find(user=> user.email === this.LoginForm.value.email && user.Password === this.LoginForm.value.Password);
+    if (x) {
+      this.checkTokenLocation()
+      this.router.navigate(['/home']);
+    } else {
+      this.inCorrectEmailOrPassword = true;
+    }
+  }
+  public checkTokenLocation(){
+    if(this.LoginForm.get('rememberMe').value){
+      localStorage.setItem('access_token', '123');
+    }else{
+      sessionStorage.setItem('access_token', '123');
+    }
   }
 
   logIn() {

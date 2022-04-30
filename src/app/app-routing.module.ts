@@ -17,6 +17,11 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     loadChildren: () => import('./feature-modules/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
+  {
+    path: 'requests',
+    canActivate: [AuthenticationGuard],
+    loadChildren: () => import('./feature-modules/requests/requests.module').then(m => m.RequestsModule)
+  },
   
 ];
 

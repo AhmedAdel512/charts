@@ -37,7 +37,7 @@
           <li class="nav-item">
             <a
               class="nav-link d-flex align-items-center mx-2"
-              routerLink="/home/requests"
+              routerLink="/requests"
               routerLinkActive="active"
             >
               <mat-icon class="mx-2">group</mat-icon>
@@ -75,7 +75,7 @@
             aria-labelledby="navbarDropdown"
           >
             <li class="text-center"><a class="dropdown-item">Profile</a></li>
-            <li class="text-center"><a class="dropdown-item">Logout</a></li>
+            <li class="text-center"><a class="dropdown-item" (click)="onLogout()">Logout</a></li>
           </ul>
         </li>
       </div>

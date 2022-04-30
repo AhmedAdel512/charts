@@ -24,37 +24,27 @@ import { FilterComponent } from './components/filter/filter.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RequestsComponent } from './components/requests/requests.component'
+import { ShardModulesModule } from '../shard-modules/shard-modules.module';
 
 
 @NgModule({
   declarations: [
-    PieChartComponent,
-    BarChartComponent,
-    ManageDashboardPageComponent,
-    BoxesComponent,
-    TableComponent,
-    DatePickerRangeComponent,
-    MultipleSelectionComponent,
-    PaginationComponent,
-    FilterComponent,
-    NavBarComponent,
-    RequestsComponent
+    // PieChartComponent,
+    // BarChartComponent,
+    // ManageDashboardPageComponent,
+    // BoxesComponent,
+    // TableComponent,
+    // DatePickerRangeComponent,
+    // MultipleSelectionComponent,
+    // PaginationComponent,
+    // FilterComponent,
+    // NavBarComponent,
+    // RequestsComponent
   ],
   imports: [
     CommonModule,
-    NgChartsModule,
-    DashboardRoutingModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatSelectModule,
-    FormsModule,
-    MatSortModule,
-    MatIconModule
+
+    ShardModulesModule
   ],
   providers: [
     DatePipe
