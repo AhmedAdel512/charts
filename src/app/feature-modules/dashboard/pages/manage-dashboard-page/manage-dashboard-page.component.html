@@ -52,7 +52,17 @@
 
               <!-- Small boxes (Stat box) -->
               <div class="row">
-                <!-- ./col -->
+                <div class="col-lg-1" *ngFor="let box of boxes">
+                  <app-boxes
+                    [title]="box.title"
+                    [textColor]="box.textColor"
+                    [value]="box.value"
+                    [bgColor]="box.bgColor"
+                  ></app-boxes>
+
+                </div>
+              </div>
+              <!-- <div class="row">
                 <div class="col-lg-3 col-6" *ngFor="let box of boxes">
                   <app-boxes
                     [title]="box.title"
@@ -61,9 +71,8 @@
                     [bgColor]="box.bgColor"
                   ></app-boxes>
 
-                  <!-- small box -->
                 </div>
-              </div>
+              </div> -->
 
               <div class="row">
                 <div class="col-md-6">
@@ -93,15 +102,15 @@
                 <div
                   class="col-md-12 d-flex align-items-end justify-content-between"
                 >
-                  <app-filter
+                  <!-- <app-filter
                     (filterValue)="onSearchChange($event)"
                     [searchQuery]="filtration.searchQuery"
                   >
-                  </app-filter>
+                  </app-filter> -->
                   <div>
                     <app-multiple-selection
                       class="mx-4"
-                      placeHolder="Filter by Status"
+                      placeHolder="Filter by Names"
                       (onSelectChange)="multipleSelectionChange($event)"
                       [list]="dropdownList"
                       [types]="filtration.types"

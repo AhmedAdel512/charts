@@ -20,7 +20,7 @@ export class AuthService {
   }
   
   public checkToken() {
-    return localStorage.getItem('access_token')
+    return localStorage.getItem('access_token') || sessionStorage.getItem('access_token')
   }
 
   public async configureAuth() {
