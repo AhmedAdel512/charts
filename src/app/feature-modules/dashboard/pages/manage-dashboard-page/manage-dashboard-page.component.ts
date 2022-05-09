@@ -55,19 +55,19 @@ export class ManageDashboardPageComponent implements OnInit {
     pageSizeOptions: [5, 10, 20],
   };
 
-  dropdownList: string[] = ['Active', 'Not Active'];
+  dropdownList: string[] = DB.ACCOUNTS[0].employees.map((a) => a.fullName);
+  // dropdownList: string[] = ['Active','Not Active']
 
   public barChartOptions: any = {
     scales: {
-      xAxes: [
-        {
-          ticks: {
-            minRotation: 50,
-          },
+      xAxes: {
+        ticks: {
+          minRotation: 40,
         },
-      ],
+      },
     },
   };
+
   public pieChartClientsData: ChartData<'pie', number[], string | string[]> =
     DB.CLIENTS;
   public barChartPortfolios: ChartData<'bar'> = {
@@ -196,10 +196,14 @@ export class ManageDashboardPageComponent implements OnInit {
 
     // Types Filtration functionality
     if (this.filtration.types.length > 0) {
-      result = result.filter((data) =>
-        this.filtration.types.some((type) => STATUS_ENUM[type] === data.idle)
-      );
+      result = result.filter((data) => this.filtration.types.includes(data.fullName));
+          console.log(result)
     }
+    // if (this.filtration.types.length > 0) {
+    //   result = result.filter((data) =>
+    //     this.filtration.types.some((type) => STATUS_ENUM[type] === data.idle)
+    //   );
+    // }
 
     // sortingFiltration functionality
     if (this.filtration.sort == 'asc') {
@@ -225,6 +229,7 @@ export class ManageDashboardPageComponent implements OnInit {
   }
 
   public multipleSelectionChange(value: any[]) {
+    console.log(value)
     this.filtration = {
       ...this.filtration,
       types: value,

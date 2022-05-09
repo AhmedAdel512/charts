@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private _authService: AuthService) { }
 
   ngOnInit(): void {
-    this._authService.configureAuth()
+    // this._authService.configureAuth()
   }
 
 }

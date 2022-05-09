@@ -11,6 +11,7 @@ export class BoxesComponent implements OnInit {
   @Input() value;
   @Input() bgColor;
   @Input() textColor;
+  @Input() icon;
   constructor() { }
 
   ngOnInit(): void {

@@ -9,7 +9,7 @@
         <img
           [ngClass]="{ 'd-none': flag }"
           class="animation__shake"
-          src="../../../../../assets/dist/img/AdminLTELogo.png"
+          src="../../../../../assets/img/8d5PsyxFTEkelUVJf0q5K7mcDf3a47EBAiEv7dyP.jpg"
           alt="Logo"
           height="60"
           width="60"
@@ -35,7 +35,7 @@
                   <div class="row">
                     <div class="col-sm-12 d-flex justify-content-between">
                       <h1 class="m-0 text-bold pt-3">
-                        Dashboard
+                        My Requests
                       </h1>
                       <app-date-picker-range
                       label="Date Filter"
@@ -51,14 +51,15 @@
                 </div>
   
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
+                <div class="row justify-content-center">
                   <!-- ./col -->
-                  <div class="col-lg-3 col-6" *ngFor="let box of boxes">
+                  <div class="col-2" *ngFor="let box of boxes">
                     <app-boxes
                       [title]="box.title"
                       [textColor]="box.textColor"
                       [value]="box.value"
                       [bgColor]="box.bgColor"
+                      [icon]="box.icon"
                     ></app-boxes>
   
                     <!-- small box -->
@@ -66,7 +67,60 @@
                 </div>
   
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col">
+                    <app-bar-chart
+                        [title]="client + ' Resources per years'"
+                        [bgColor]="bgColor"
+                        [barChartData]="barChartPortfolios"
+                        [barChartOptions]="barChartOptions"
+                        (barChartSendData)="barChartSendData($event)"
+                        [enableRemove]="false"
+                        ></app-bar-chart>
+                    </div>
+                    <div class="col">
+                      <app-pie-chart
+                      title="Accounts"
+                      [bgColor]="bgColor"
+                      [pieChartData]="pieChartClientsData"
+                      [minHeight]="450"
+                      [enableRemove]="false"
+                      ></app-pie-chart>
+                      <!-- (pieChartSendDate)="pieChartSendDate($event)" -->
+                    </div>
+                    <div class="col">
+                      <app-bar-chart
+                      [title]="client + ' Resources per years'"
+                      [bgColor]="bgColor"
+                      [barChartData]="barChartPortfolios"
+                      [barChartOptions]="barChartOptions"
+                      (barChartSendData)="barChartSendData($event)"
+                      [enableRemove]="false"
+                      ></app-bar-chart>
+                    </div>
+                    <div class="col">
+                      <app-bar-chart
+                      [title]="client + ' Resources per years'"
+                      [bgColor]="bgColor"
+                      [barChartData]="barChartPortfolios"
+                      [barChartOptions]="barChartOptions"
+                      (barChartSendData)="barChartSendData($event)"
+                      [enableRemove]="false"
+                      ></app-bar-chart>
+                    </div>
+                </div>
+                
+                  <div class="row">
+                    <div class="col">
+                      <app-bar-chart
+                        [title]="client + ' Resources per years'"
+                        [bgColor]="bgColor"
+                        [barChartData]="barChartPortfolios"
+                        [barChartOptions]="barChartOptions"
+                        (barChartSendData)="barChartSendData($event)"
+                        [enableRemove]="false"
+                      ></app-bar-chart>
+                    </div>
+                  <div class="col">
                     <!-- PIE CHART -->
                     <app-pie-chart
                       title="Accounts"
@@ -76,7 +130,7 @@
                       [enableRemove]="false"
                     ></app-pie-chart>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col">
                     <app-bar-chart
                       [title]="client + ' Resources per years'"
                       [bgColor]="bgColor"
@@ -87,7 +141,7 @@
                     ></app-bar-chart>
                   </div>
                 </div>
-                <div
+                <!-- <div
                   class="row bg-white rounded-lg px-3 shadow border border-1 m-0 mb-2"
                 >
                   <div
@@ -106,17 +160,17 @@
                         [list]="dropdownList"
                         [types]="filtration.types"
                       ></app-multiple-selection>
-                      <!-- <app-date-picker-range
+                      <app-date-picker-range
                         label="Date Filter"
                         [from]="filtration.from"
                         [to]="filtration.to"
                         (startDate)="startDate($event)"
                         (endDate)="endDate($event)"
                       >
-                      </app-date-picker-range> -->
+                      </app-date-picker-range>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="row pb-5">
                   <div class="col-12">
                     <app-table

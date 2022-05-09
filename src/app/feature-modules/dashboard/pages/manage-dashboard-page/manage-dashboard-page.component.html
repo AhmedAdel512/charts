@@ -9,7 +9,7 @@
       <img
         [ngClass]="{ 'd-none': flag }"
         class="animation__shake"
-        src="../../../../../assets/dist/img/AdminLTELogo.png"
+        src="../../../../../assets/img/8d5PsyxFTEkelUVJf0q5K7mcDf3a47EBAiEv7dyP.jpg"
         alt="Logo"
         height="60"
         width="60"
@@ -52,12 +52,13 @@
 
               <!-- Small boxes (Stat box) -->
               <div class="row">
-                <div class="col-lg-1" *ngFor="let box of boxes">
+                <div class="col" *ngFor="let box of boxes">
                   <app-boxes
                     [title]="box.title"
                     [textColor]="box.textColor"
                     [value]="box.value"
                     [bgColor]="box.bgColor"
+                    [icon]="box.icon"
                   ></app-boxes>
 
                 </div>
@@ -73,8 +74,40 @@
 
                 </div>
               </div> -->
-
               <div class="row">
+                <div class="col">
+                  <app-bar-chart
+                      [title]="client + ' Resources per years'"
+                      [bgColor]="bgColor"
+                      [barChartData]="barChartPortfolios"
+                      [barChartOptions]="barChartOptions"
+                      (barChartSendData)="barChartSendData($event)"
+                      [enableRemove]="false"
+                      ></app-bar-chart>
+                  </div>
+                  <div class="col">
+                    <app-bar-chart
+                    [title]="client + ' Resources per years'"
+                    [bgColor]="bgColor"
+                    [barChartData]="barChartPortfolios"
+                    [barChartOptions]="barChartOptions"
+                    (barChartSendData)="barChartSendData($event)"
+                    [enableRemove]="false"
+                    ></app-bar-chart>
+                  </div>
+                  <div class="col">
+                    <app-bar-chart
+                    [title]="client + ' Resources per years'"
+                    [bgColor]="bgColor"
+                    [barChartData]="barChartPortfolios"
+                    [barChartOptions]="barChartOptions"
+                    (barChartSendData)="barChartSendData($event)"
+                    [enableRemove]="false"
+                    ></app-bar-chart>
+                  </div>
+              </div>
+              
+                <div class="row">
                 <div class="col-md-6">
                   <!-- PIE CHART -->
                   <app-pie-chart

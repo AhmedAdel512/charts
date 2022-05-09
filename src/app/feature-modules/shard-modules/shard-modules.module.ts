@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { DashboardRoutingModule } from '../dashboard/dashboard-routing.module';
 import { NgChartsModule } from 'ng2-charts';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -55,6 +56,7 @@ import { NgChartsModule } from 'ng2-charts';
     FormsModule,
     MatSortModule,
     MatIconModule,
+    NgSelectModule
   ],
   exports: [
     PieChartComponent,

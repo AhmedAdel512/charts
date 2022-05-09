@@ -18,8 +18,9 @@
       [data]="pieChartData"
       [type]="'pie'"
       (chartClick)="pieChartClick($event.active)"
+      [style.min-height]="minHeight + 'px'"
       style="
-        min-height: 250px;
+        /* min-height: 250px; */
         height: 450px;
         max-height: 450px;
         max-width: 100%;

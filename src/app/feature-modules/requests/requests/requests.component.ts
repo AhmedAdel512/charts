@@ -59,13 +59,12 @@ export class RequestsComponent implements OnInit {
 
   public barChartOptions: any = {
     scales: {
-      xAxes: [
+      xAxes: 
         {
           ticks: {
             minRotation: 50,
           },
         },
-      ],
     },
   };
   public pieChartClientsData: ChartData<'pie', number[], string | string[]> =
@@ -73,11 +72,11 @@ export class RequestsComponent implements OnInit {
   public barChartPortfolios: ChartData<'bar'> = {
     ...DB.ACCOUNTS[0].portfolios,
   };
-  public boxes: any[] = DB.ACCOUNTS[0].info;
-  public client: string = DB.ACCOUNTS[0].client;
-  public bgColor: string = DB.ACCOUNTS[0].bgColor;
+  public boxes: any[] = DB.REQUESTS[0].info;
+  public client: string = DB.REQUESTS[0].client;
+  public bgColor: string = DB.REQUESTS[0].bgColor;
   // public textColor: string = DB.ACCOUNTS[0].textColor;
-  public textColor: string = DB.ACCOUNTS[0].textColor;
+  public textColor: string = DB.REQUESTS[0].textColor;
   constructor(private _oAuthService: AuthService) {}
   ngOnInit(): void {
     setTimeout(() => {
@@ -92,7 +91,7 @@ export class RequestsComponent implements OnInit {
 
   public pieChartSendDate(value) {
     if (value.length > 0) {
-      let account = DB.ACCOUNTS.find(
+      let account = DB.REQUESTS.find(
         (account) => account.client == DB.CLIENTS.labels[value[0].index]
       );
       if (account) {

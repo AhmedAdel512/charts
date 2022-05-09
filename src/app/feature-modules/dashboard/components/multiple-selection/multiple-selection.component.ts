@@ -19,8 +19,8 @@ export class MultipleSelectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectedData(data) {
-    this.onSelectChange.emit(data.value)
+  onSelectedData(data) {
+    this.onSelectChange.emit(data)
   }
 
 

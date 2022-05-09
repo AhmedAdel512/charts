@@ -19,6 +19,6 @@ export class NavBarComponent implements OnInit {
     localStorage.getItem('access_token')
       ? localStorage.removeItem('access_token')
       : sessionStorage.removeItem('access_token');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 }
