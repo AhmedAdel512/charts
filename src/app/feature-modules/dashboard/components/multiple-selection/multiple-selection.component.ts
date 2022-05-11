@@ -20,7 +20,7 @@ export class MultipleSelectionComponent implements OnInit {
   }
 
   onSelectedData(data) {
-    this.onSelectChange.emit(data)
+    this.onSelectChange.emit(data.value)
   }
 
 

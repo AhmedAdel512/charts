@@ -1,4 +1,4 @@
-<!-- <mat-form-field>
+<mat-form-field>
   <mat-label>{{ placeHolder }}</mat-label>
   <mat-select
     multiple
@@ -7,8 +7,12 @@
   >
     <mat-option *ngFor="let item of list" [value]="item">{{ item }}</mat-option>
   </mat-select>
-</mat-form-field> -->
+</mat-form-field>
 
-<ng-select [multiple]="true" [placeholder]="placeHolder" (change)="onSelectedData($event)">
+<!-- <ng-select
+  [multiple]="true"
+  [placeholder]="placeHolder"
+  (change)="onSelectedData($event)"
+>
   <ng-option *ngFor="let item of list" [value]="item">{{ item }}</ng-option>
-</ng-select>
+</ng-select> -->

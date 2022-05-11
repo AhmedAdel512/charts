@@ -41,9 +41,9 @@
                     label="Date Filter"
                     [from]="filtration.from"
                     [to]="filtration.to"
-                    (startDate)="startDate($event)"
-                    (endDate)="endDate($event)"
-                  >
+                    >
+                    <!-- (startDate)="startDate($event)"
+                    (endDate)="endDate($event)" -->
                   </app-date-picker-range>
 
                   </div>
@@ -77,7 +77,7 @@
               <div class="row">
                 <div class="col">
                   <app-bar-chart
-                      [title]="client + ' Resources per years'"
+                      [title]="client + ' People'"
                       [bgColor]="bgColor"
                       [barChartData]="barChartPortfolios"
                       [barChartOptions]="barChartOptions"
@@ -87,7 +87,7 @@
                   </div>
                   <div class="col">
                     <app-bar-chart
-                    [title]="client + ' Resources per years'"
+                    [title]="client + ' Departments'"
                     [bgColor]="bgColor"
                     [barChartData]="barChartPortfolios"
                     [barChartOptions]="barChartOptions"
@@ -97,7 +97,7 @@
                   </div>
                   <div class="col">
                     <app-bar-chart
-                    [title]="client + ' Resources per years'"
+                    [title]="client + ' Data'"
                     [bgColor]="bgColor"
                     [barChartData]="barChartPortfolios"
                     [barChartOptions]="barChartOptions"
@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-md-6">
                   <app-bar-chart
-                    [title]="client + ' Resources per years'"
+                    [title]="client + ' Resources'"
                     [bgColor]="bgColor"
                     [barChartData]="barChartPortfolios"
                     [barChartOptions]="barChartOptions"
@@ -135,27 +135,27 @@
                 <div
                   class="col-md-12 d-flex align-items-end justify-content-between"
                 >
-                  <!-- <app-filter
+                  <app-filter
                     (filterValue)="onSearchChange($event)"
                     [searchQuery]="filtration.searchQuery"
                   >
-                  </app-filter> -->
+                  </app-filter>
                   <div>
                     <app-multiple-selection
                       class="mx-4"
-                      placeHolder="Filter by Names"
+                      placeHolder="Filter by Status"
                       (onSelectChange)="multipleSelectionChange($event)"
                       [list]="dropdownList"
                       [types]="filtration.types"
                     ></app-multiple-selection>
-                    <!-- <app-date-picker-range
+                    <app-date-picker-range
                       label="Date Filter"
                       [from]="filtration.from"
                       [to]="filtration.to"
                       (startDate)="startDate($event)"
                       (endDate)="endDate($event)"
                     >
-                    </app-date-picker-range> -->
+                    </app-date-picker-range>
                   </div>
                 </div>
               </div>

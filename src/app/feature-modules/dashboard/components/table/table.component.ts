@@ -29,4 +29,6 @@ export class TableComponent implements OnInit {
     this.sortState.emit(sortState)
   }
 
+  
+
 }

@@ -55,8 +55,8 @@ export class ManageDashboardPageComponent implements OnInit {
     pageSizeOptions: [5, 10, 20],
   };
 
-  dropdownList: string[] = DB.ACCOUNTS[0].employees.map((a) => a.fullName);
-  // dropdownList: string[] = ['Active','Not Active']
+  // dropdownList: string[] = DB.ACCOUNTS[0].employees.map((a) => a.fullName);
+  dropdownList: string[] = ['Active','Not Active']
 
   public barChartOptions: any = {
     scales: {
@@ -195,15 +195,15 @@ export class ManageDashboardPageComponent implements OnInit {
     );
 
     // Types Filtration functionality
-    if (this.filtration.types.length > 0) {
-      result = result.filter((data) => this.filtration.types.includes(data.fullName));
-          console.log(result)
-    }
     // if (this.filtration.types.length > 0) {
-    //   result = result.filter((data) =>
-    //     this.filtration.types.some((type) => STATUS_ENUM[type] === data.idle)
-    //   );
+    //   result = result.filter((data) => this.filtration.types.includes(data.fullName));
+    //       console.log(result)
     // }
+    if (this.filtration.types.length > 0) {
+      result = result.filter((data) =>
+        this.filtration.types.some((type) => STATUS_ENUM[type] === data.idle)
+      );
+    }
 
     // sortingFiltration functionality
     if (this.filtration.sort == 'asc') {
