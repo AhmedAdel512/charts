@@ -7,8 +7,8 @@
   >
     <div class="row">
       <div class="col-10 mx-auto py-3">
-        <div class="d-flex mb-3 ml-3">
-          <img src="../../../assets/img/logo-01-1.png" class="w-50" />
+        <div class="d-flex  mb-3 ml-3">
+          <img src="../../../assets/img/logo-01-1.png" class="avatar" />
         </div>
         <h3 class="h3 d-flex ml-3">LOGIN TO YOUR ACCOUNT</h3>
         <div>
@@ -17,11 +17,10 @@
             class="form-control"
             placeholder="Email Address"
             formControlName="email"
-            (click)="onChangeEmail()"
           />
 
           <div
-            class="d-flex ml-3 mb-2"
+            class="d-flex ml-3"
             *ngIf="
               LoginForm.controls['email'].invalid &&
               LoginForm.controls['email'].errors &&
@@ -29,11 +28,11 @@
             "
           >
             <div *ngIf="LoginForm.controls['email'].errors.required">
-              <span class="text-danger"> Email is Required</span>
+              <span class="text-danger mb-2"> Email is Required</span>
             </div>
 
             <div *ngIf="LoginForm.controls.email.errors?.pattern">
-              <span class="text-danger"> Please Enter Valid Email</span>
+              <span class="text-danger mb-2"> Please Enter Valid Email</span>
             </div>
           </div>
         </div>
@@ -43,10 +42,9 @@
             placeholder="Password"
             formControlName="Password"
             class="form-control"
-            (click)="onChangePassword()"
           />
           <div
-            class="d-flex ml-3 mb-2"
+            class="d-flex ml-3"
             *ngIf="
               LoginForm.controls['Password'].invalid &&
               LoginForm.controls['Password'].errors &&
@@ -54,18 +52,18 @@
             "
           >
             <div *ngIf="LoginForm.controls['Password'].errors.required">
-              <span class="text-danger"> Password is Required</span>
+              <span class="text-danger mb-2"> Password is Required</span>
             </div>
 
             <div *ngIf="LoginForm.controls.Password.errors?.minlength">
-              <span class="text-danger">
+              <span class="text-danger mb-2">
                 Password should be more than 8 characters
               </span>
             </div>
           </div>
         </div>
         <div class="d-flex ml-3" *ngIf="inCorrectEmailOrPassword">
-          <span class="text-danger mb-2"> Wrong Email or Password </span>
+          <span class="text-danger mb-2"> InCorrect Email Or Password </span>
         </div>
 
         <div class="row mb-4 mt-2 col-12">

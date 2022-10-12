@@ -32,15 +32,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  onChangeEmail() {
-    this.inCorrectEmailOrPassword = false;
+  public show() {
+    console.log(this.LoginForm.value);
   }
-
-  onChangePassword() {
-    this.inCorrectEmailOrPassword = false;
-  }
-
   onSubmit() {
     let x = this.users.find(user=> user.email === this.LoginForm.value.email && user.Password === this.LoginForm.value.Password);
     if (x) {
@@ -52,10 +46,8 @@ export class LoginComponent implements OnInit {
   }
   public checkTokenLocation(){
     if(this.LoginForm.get('rememberMe').value){
-      console.log(this.LoginForm.get('rememberMe').value)
       localStorage.setItem('access_token', '123');
     }else{
-      console.log(this.LoginForm.get('rememberMe').value)
       sessionStorage.setItem('access_token', '123');
     }
   }

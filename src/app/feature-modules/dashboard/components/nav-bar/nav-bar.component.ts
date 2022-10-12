@@ -15,7 +15,6 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {}
 
   onLogout() {
-    console.log('a')
     localStorage.getItem('access_token')
       ? localStorage.removeItem('access_token')
       : sessionStorage.removeItem('access_token');
